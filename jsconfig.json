@@ -4,7 +4,8 @@
     "paths": {
       "@app/*": ["app/*"],
       "@data": ["assets/data.json"],
-      "@styles": ["assets/styles.js"]
+      "@styles": ["assets/styles.js"],
+      "@colours": ["assets/colours.js"]
     }
   }
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, ScrollView } from "react-native";
+import { SafeAreaView, ScrollView, View, Text } from "react-native";
 
 import LargeTile from "components/LargeTile";
 
@@ -9,12 +9,21 @@ import styles from "@styles";
 export default function SettingsScreen() {
   const [locations, setlocations] = useState(data.locations);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView>
+        {/* Stellar recommendations section */}
+        <View style={{ ...styles.contentPadding, rowGap: 8 }}>
+          <Text style={styles.sectionText}>Stellar recommendations</Text>
+          <Text style={styles.smallText}>
+            Unearth the best locations on campus to study, relax or grab a bite
+            with our curated Stellar recommendations!
+          </Text>
+        </View>
         <ScrollView
           horizontal={true}
-          contentContainerStyle={styles.tileContainer}
           showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.tileContainer}
+          style={styles.horizontalTiles}
         >
           {locations.map(({ name, reviews, images }, idx) => (
             <LargeTile
@@ -28,7 +37,32 @@ export default function SettingsScreen() {
             />
           ))}
         </ScrollView>
+
+        {/* Recently viewed section */}
+        <Text style={{ ...styles.contentPadding, ...styles.sectionText }}>
+          Recently viewed
+        </Text>
+        {/* <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.tileContainer}
+          style={styles.horizontalTiles}
+        >
+          {locations.map(({ name, reviews, images }, idx) => (
+            <LargeTile
+              key={idx}
+              name={name}
+              rating={
+                reviews.reduce((sum, review) => sum + review.rating, 0) /
+                reviews.length
+              }
+              image={images[0]}
+            />
+          ))}
+        </ScrollView> */}
+
+        {/* Categories... */}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

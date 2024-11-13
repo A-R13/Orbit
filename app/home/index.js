@@ -25,9 +25,10 @@ export default function SettingsScreen() {
           contentContainerStyle={styles.tileContainer}
           style={styles.horizontalTiles}
         >
-          {locations.map(({ name, reviews, images }, idx) => (
+          {locations.map(({ id, name, reviews, images }, idx) => (
             <LargeTile
               key={idx}
+              locationId={id}
               name={name}
               rating={
                 reviews.reduce((sum, review) => sum + review.rating, 0) /

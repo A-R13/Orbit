@@ -33,6 +33,7 @@
       "images": [
         "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/extra_large/public/images/1.%20Main%20Picture_SEB%20Study%20Space.jpg?itok=4w4-h5T4"
       ],
+      "categories":["study"],
       "reviews": [
         {
           "userId": "user_1",
@@ -61,6 +62,7 @@
       "images": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZCF9wzx1sRCxMlwrg4L7F01HmIR3O7AubQ&s"
       ],
+      "categories":["greenery"],
       "reviews": [
         {
           "userId": "user_1",
@@ -84,6 +86,7 @@
       "images": [
         "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_desktop/public/images/2023-08-xsespresso-silver.jpg?h=10d202d3&itok=3pgbRqZd"
       ],
+      "categories":["coffee", "food"],
       "reviews": [
         {
           "userId": "user_1",

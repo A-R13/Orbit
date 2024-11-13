@@ -1,47 +1,41 @@
 import { StyleSheet } from "react-native";
+import colours from "@colours";
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
   },
-
   tileContainer: {
     flexDirection: "row",
-    paddingHorizontal: 10,
-    marginBottom: 10,
+    columnGap: 8,
   },
-  tile: {
-    justifyContent: "flex-start",
-    alignItems: "center",
-    height: 220,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    marginRight: 10,
-    marginTop: 35,
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    width: 250,
-  },
-  image: {
-    width: 250,
-    height: 160,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  locationName: {
-    fontSize: 16,
-    paddingTop: 5,
-    paddingLeft: 10,
-    fontWeight: "400",
+  sectionText: {
+    fontSize: 24,
+    lineHeight: 24,
+    fontWeight: "bold",
     textAlign: "left",
-    width: "100%",
   },
-  stars: {
-    padding: 5,
+  text: {
+    fontSize: 24,
+    lineHeight: 24,
+    fontWeight: "regular",
+    textAlign: "left",
+  },
+  smallText: {
+    fontSize: 16,
+    lineHeight: 16,
+    fontWeight: "regular",
+    textAlign: "left",
+  },
+  contentPadding: {
     width: "100%",
+    paddingTop: 16,
+    paddingHorizontal: 32,
+  },
+  horizontalTiles: {
+    marginTop: 8,
+    marginBottom: 32,
+    marginHorizontal: 32,
+    overflow: "visible",
   },
 });

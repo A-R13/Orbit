@@ -1,9 +1,16 @@
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+import colours from "@colours";
+
 export default function RootLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false, tabBarActiveTintColor: "#5928ED" }}>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colours.purple,
+      }}
+    >
       <Tabs.Screen
         name="home/index"
         options={{
@@ -40,6 +47,7 @@ export default function RootLayout() {
           ),
         }}
       />
+      <Tabs.Screen name="location/index" options={{ href: null }} />
       <Tabs.Screen name="index" options={{ href: null }} />
     </Tabs>
   );

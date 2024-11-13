@@ -2,8 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@data": ["data/data.json"],
-      "@app/*": ["app/*"]
+      "@app/*": ["app/*"],
+      "@data": ["assets/data.json"],
+      "@styles": ["assets/styles.js"]
     }
   }
 }

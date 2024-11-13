@@ -38,4 +38,15 @@ export default styles = StyleSheet.create({
     marginHorizontal: 32,
     overflow: "visible",
   },
+  headingText: {
+    fontSize: 20,
+    paddingLeft: 15,
+    marginTop: 25,
+    fontWeight: "bold",
+  },
+  descriptionText: {
+    fontSize: 14,
+    paddingLeft: 15,
+    marginTop: 5,
+  },
 });

@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "name": "Science & Engineering",
+      "rating": "3.5",
+      "image": "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/extra_large/public/images/1.%20Main%20Picture_SEB%20Study%20Space.jpg?itok=4w4-h5T4"
+    },
+    {
+      "id": 2,
+      "name": "Village Green",
+      "rating": "4.5",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZCF9wzx1sRCxMlwrg4L7F01HmIR3O7AubQ&s"
+    },
+    {
+      "id": 3,
+      "name": "Library Lawn",
+      "rating": "4.0",
+      "image": "https://www.example.com/library-lawn.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Sports Field",
+      "rating": "4.2",
+      "image": "https://www.example.com/sports-field.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Main Quad",
+      "rating": "4.8",
+      "image": "https://www.example.com/main-quad.jpg"
+    }
+  ]

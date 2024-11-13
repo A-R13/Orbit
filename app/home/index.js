@@ -1,58 +1,91 @@
-import { Text, View, StyleSheet, ScrollView} from "react-native";
-import { useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import { StarRatingDisplay } from "react-native-star-rating-widget";
+import locationsData from "../../locations.json";
 
 export default function SettingsScreen() {
-  const [recommendations, setRecommendations] = useState([{name: "Science & Engineering", rating: "3.5", image: "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/extra_large/public/images/1.%20Main%20Picture_SEB%20Study%20Space.jpg?itok=4w4-h5T4"}]);
+  const [locations, setlocations] = useState([]);
 
+  useEffect(() => {
+    setlocations(locationsData);
+  }, []);
   return (
-    <View style={ styles.container}>
+    <View style={styles.container}>
+      <Text>Home Screen</Text>
       <ScrollView>
-        <Text>Home Screen</Text>
-        {recommendations.map(({ name, rating, image}, idx) => (
-          <View id={idx+name} styles = {styles.tileContainer}> 
-          <Text>{name}</Text></View>
-        ))}
+        <ScrollView
+          horizontal={true}
+          contentContainerStyle={styles.tileContainer}
+          showsHorizontalScrollIndicator={false}
+        >
+          {locations.map(({ name, rating, image }, idx) => (
+            <TouchableOpacity key={idx} style={styles.tile}>
+              <Image source={{ uri: image }} style={styles.image} />
+              <Text style={styles.locationName}>{name}</Text>
+              <StarRatingDisplay
+                rating={rating}
+                color="#5928ED"
+                emptyColor="#A489F5"
+                starSize="18"
+                style={styles.stars}
+              />
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
       </ScrollView>
-      
     </View>
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 100,
+    marginTop: 50,
   },
 
   tileContainer: {
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center ",
-    width: "100%",
-    paddingTop: 15,
-  },
-  emptyText: {
-    position: "absolute",
-    top: "40%",
+    paddingHorizontal: 10,
+    marginBottom: 10,
   },
   tile: {
-    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    height: 220,
     backgroundColor: "#fff",
     borderRadius: 10,
-    padding: 5,
-    marginVertical: 4,
-    marginHorizontal: 15,
-    alignItems: "center",
-    elevation: 2, // Shadow for Android
-    shadowColor: "#000", // Shadow for iOS
+    marginRight: 10,
+    marginTop: 35,
+    elevation: 2,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    width: "80%",
+    width: 250,
+  },
+  image: {
+    width: 250,
+    height: 160,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  locationName: {
+    fontSize: 16,
+    paddingTop: 5,
+    paddingLeft: 10,
+    fontWeight: "400",
+    textAlign: "left",
+    width: "100%",
+  },
+  stars: {
+    padding: 5,
+    width: "100%",
   },
 });

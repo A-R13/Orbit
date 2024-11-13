@@ -8,14 +8,14 @@ import {
   Image,
 } from "react-native";
 import { StarRatingDisplay } from "react-native-star-rating-widget";
-import locationsData from "../../locations.json";
 import colours from "../../colours";
+import data from "@data";
 
 export default function SettingsScreen() {
   const [locations, setlocations] = useState([]);
 
   useEffect(() => {
-    setlocations(locationsData);
+    setlocations(data.locations);
   }, []);
   return (
     <View style={styles.container}>
@@ -30,14 +30,17 @@ export default function SettingsScreen() {
           contentContainerStyle={styles.tileContainer}
           showsHorizontalScrollIndicator={false}
         >
-          {locations.map(({ name, rating, image }, idx) => (
-            <TouchableOpacity key={idx} style={styles.bigtile}>
-              <Image source={{ uri: image }} style={styles.bigImage} />
+          {locations.map(({ name, reviews, images }, idx) => (
+            <TouchableOpacity key={idx} style={styles.tile}>
+              <Image source={{ uri: images[0] }} style={styles.image} />
               <Text style={styles.locationName}>{name}</Text>
               <StarRatingDisplay
-                rating={rating}
-                color={colours.purple}
-                emptyColor={colours.lightPurple}
+                rating={
+                  reviews.reduce((sum, review) => sum + review.rating, 0) /
+                  reviews.length
+                }
+                color="#5928ED"
+                emptyColor="#A489F5"
                 starSize="18"
                 style={styles.stars}
               />

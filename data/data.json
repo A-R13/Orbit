@@ -1,0 +1,104 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "username": "jhernandez",
+      "email": "jerome@example.com",
+      "password": "hash123"
+    },
+    {
+      "id": "user_2",
+      "username": "arana",
+      "email": "aditya@example.com",
+      "password": "hash123"
+    },
+    {
+      "id": "user_3",
+      "username": "johnAlcantara",
+      "email": "john@example.com",
+      "password": "hash123"
+    },
+    {
+      "id": "user_4",
+      "username": "akankshaKaur",
+      "email": "akanksha@example.com",
+      "password": "hash123"
+    }
+  ],
+  "locations": [
+    {
+      "id": "location_1",
+      "name": "Science & Engineering",
+      "description": "Building ID K-E8",
+      "images": [
+        "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/extra_large/public/images/1.%20Main%20Picture_SEB%20Study%20Space.jpg?itok=4w4-h5T4"
+      ],
+      "reviews": [
+        {
+          "userId": "user_1",
+          "rating": 4.5,
+          "text": "Great study spot with plenty of outlets."
+        },
+        {
+          "userId": "user_2",
+          "rating": 3.0,
+          "text": "Nice space, but it can get crowded."
+        }
+      ],
+      "communityNotes": [
+        {
+          "userId": "user_2",
+          "text": "The best time to come is early morning.",
+          "upvotes": ["user_1", "user_3"],
+          "downvotes": ["user_4"]
+        }
+      ]
+    },
+    {
+      "id": "location_2",
+      "name": "Village Green",
+      "description": "TBC",
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZCF9wzx1sRCxMlwrg4L7F01HmIR3O7AubQ&s"
+      ],
+      "reviews": [
+        {
+          "userId": "user_1",
+          "rating": 5.0,
+          "text": "Cool"
+        }
+      ],
+      "communityNotes": [
+        {
+          "userId": "user_1",
+          "text": "500m walking and running track and outdoor fitness equipment",
+          "upvotes": ["user_2"],
+          "downvotes": []
+        }
+      ]
+    },
+    {
+      "id": "location_3",
+      "name": "XS Expresso",
+      "description": "TBC",
+      "images": [
+        "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_desktop/public/images/2023-08-xsespresso-silver.jpg?h=10d202d3&itok=3pgbRqZd"
+      ],
+      "reviews": [
+        {
+          "userId": "user_1",
+          "rating": 5.0,
+          "text": "Love the milkshakes"
+        }
+      ],
+      "communityNotes": [
+        {
+          "userId": "user_1",
+          "text": "Located on the Ground Floor of Biological Sciences Building (D26)",
+          "upvotes": ["user_2"],
+          "downvotes": []
+        }
+      ]
+    }
+  ]
+}

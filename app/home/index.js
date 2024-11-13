@@ -47,26 +47,6 @@ export default function SettingsScreen() {
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <Text style={styles.headingText}>Study</Text>
-        <ScrollView
-          horizontal={true}
-          contentContainerStyle={styles.tileContainer}
-          showsHorizontalScrollIndicator={false}
-        >
-          {locations.map(({ name, rating, image }, idx) => (
-            <TouchableOpacity key={idx} style={styles.smalltile}>
-              <Image source={{ uri: image }} style={styles.smallImage} />
-              <Text style={styles.locationName}>{name}</Text>
-              <StarRatingDisplay
-                rating={rating}
-                color={colours.purple}
-                emptyColor={colours.lightPurple}
-                starSize="14"
-                style={styles.stars}
-              />
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
       </ScrollView>
     </View>
   );
@@ -83,7 +63,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 10,
   },
-  bigtile: {
+  tile: {
     justifyContent: "flex-start",
     alignItems: "center",
     width: 250,
@@ -98,30 +78,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
   },
-  bigImage: {
+  image: {
     width: 250,
     height: 160,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  smalltile: {
-    justifyContent: "flex-start",
-    alignItems: "center",
-    width: 140,
-    height: 180,
-    backgroundColor: colours.white,
-    borderRadius: 10,
-    marginRight: 10,
-    marginTop: 10,
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-  },
-  smallImage: {
-    width: 140,
-    height: 100,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },

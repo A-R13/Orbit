@@ -6,10 +6,11 @@ import {
   Dimensions,
 } from "react-native";
 import { StarRatingDisplay } from "react-native-star-rating-widget";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import SavedButton from "components/SavedButton";
-
 import { useLocalSearchParams } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
+import SavedButton from "components/SavedButton";
+import LocationTabBar from "components/LocationTabBar";
 
 import data from "@data";
 import styles from "@styles";
@@ -65,6 +66,7 @@ export default function LocationOverview() {
             </Text>
           </View>
         </View>
+        <LocationTabBar />
         <Text style={[styles.smallText, { marginTop: 16 }]}>
           {JSON.stringify(location)}
         </Text>

@@ -6,7 +6,7 @@ import LargeTile from "components/LargeTile";
 import data from "@data";
 import styles from "@styles";
 
-export default function SettingsScreen() {
+export default function HomeScreen() {
   const [locations, setlocations] = useState(data.locations);
   return (
     <SafeAreaView style={styles.container}>

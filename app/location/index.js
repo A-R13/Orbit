@@ -5,8 +5,9 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
+import { useState, useCallback } from "react";
 import { StarRatingDisplay } from "react-native-star-rating-widget";
-import { useLocalSearchParams } from "expo-router";
+import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import SavedButton from "components/SavedButton";
@@ -22,11 +23,30 @@ const BORDER_RADIUS = 40;
 const PANEL_HEIGHT = 500;
 export default function LocationOverview() {
   const screenHeight = Dimensions.get("window").height;
+  const [tab, setTab] = useState("Overview");
 
   const { locationId } = useLocalSearchParams();
   const location = data.locations.find(
     (location) => location.id === locationId
   );
+
+  useFocusEffect(
+    useCallback(() => {
+      setTab("Overview");
+    }, [])
+  );
+
+  // Render content based on the selected tab
+  function renderContent() {
+    switch (tab) {
+      case "Notes":
+        return <Text style={styles.smallText}>Notes</Text>;
+      case "Reviews":
+        return <Text style={styles.smallText}>Reviews</Text>;
+      default:
+        return <Text style={styles.smallText}>Overview</Text>;
+    }
+  }
 
   return (
     <View style={overview.container}>
@@ -66,10 +86,8 @@ export default function LocationOverview() {
             </Text>
           </View>
         </View>
-        <LocationTabBar />
-        <Text style={[styles.smallText, { marginTop: 16 }]}>
-          {JSON.stringify(location)}
-        </Text>
+        <LocationTabBar tab={tab} setTab={setTab} />
+        {renderContent()}
       </View>
     </View>
   );

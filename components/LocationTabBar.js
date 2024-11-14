@@ -1,31 +1,40 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
 import styles from "@styles";
 import colours from "@colours";
 
-export default function LocationTabBar() {
+export default function LocationTabBar({ tab, setTab }) {
   return (
     <View style={locationTabBar.locationTabBar}>
-      <LocationTab tabName={"Overview"} />
-      <LocationTab tabName={"Review"} />
-      <LocationTab tabName={"Notes"} />
+      <LocationTab tabName={"Overview"} tab={tab} setTab={setTab} />
+      <LocationTab tabName={"Reviews"} tab={tab} setTab={setTab} />
+      <LocationTab tabName={"Notes"} tab={tab} setTab={setTab} />
     </View>
   );
 }
 
-function LocationTab({ tabName }) {
+function LocationTab({ tabName, tab, setTab }) {
+  const isSelected = tab == tabName;
   return (
-    <View style={locationTabBar.locationTab}>
+    <Pressable
+      style={[
+        locationTabBar.locationTab,
+        isSelected && locationTabBar.selectedTab,
+      ]}
+      onPress={() => setTab(tabName)}
+    >
       <Text
         style={[
           styles.smallText,
-          { fontWeight: "bold", color: colours.purple },
+          {
+            fontWeight: "bold",
+            color: isSelected ? colours.purple : colours.darkGrey,
+          },
         ]}
       >
         {tabName}
       </Text>
-    </View>
+    </Pressable>
   );
 }
 
@@ -35,6 +44,9 @@ const locationTabBar = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderBottomWidth: 2,
+    borderBottomColor: "rgba(0, 0, 0, 0)",
+  },
+  selectedTab: {
     borderBottomColor: colours.purple,
   },
   locationTabBar: {

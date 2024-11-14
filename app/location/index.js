@@ -5,6 +5,9 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
+import { StarRatingDisplay } from "react-native-star-rating-widget";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import SavedButton from "components/SavedButton";
 
 import { useLocalSearchParams } from "expo-router";
 
@@ -35,10 +38,44 @@ export default function LocationOverview() {
       >
         <BackButton />
       </ImageBackground>
-      <View style={overview.bottomRectangle}>
-        <Text style={styles.smallText}>{JSON.stringify(location)}</Text>
+      <View style={overview.backgroundPanel}>
+        <View style={overview.header}>
+          <Text style={styles.sectionText} numberOfLines={2}>
+            {location.name}
+          </Text>
+          <View style={overview.addressRow}>
+            <Ionicons name="location-sharp" size={24} color={colours.black} />
+            <Text style={[styles.smallText, { flex: 1 }]} numberOfLines={2}>
+              {location.address}
+            </Text>
+            <SavedButton />
+          </View>
+          <View style={overview.ratings}>
+            <Text style={styles.smallText}>
+              {(Math.floor(averageRating(location.reviews) * 2) / 2).toFixed(1)}
+            </Text>
+            <StarRatingDisplay
+              rating={averageRating(location.reviews)}
+              color={colours.purple}
+              emptyColor={colours.lightPurple}
+              starSize={16}
+            />
+            <Text style={[styles.smallText, { color: colours.darkGrey }]}>
+              {location.reviews.length} reviews
+            </Text>
+          </View>
+        </View>
+        <Text style={[styles.smallText, { marginTop: 16 }]}>
+          {JSON.stringify(location)}
+        </Text>
       </View>
     </View>
+  );
+}
+
+function averageRating(reviews) {
+  return (
+    reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
   );
 }
 
@@ -55,7 +92,7 @@ const overview = StyleSheet.create({
     paddingTop: 64,
     paddingHorizontal: 32,
   },
-  bottomRectangle: {
+  backgroundPanel: {
     height: PANEL_HEIGHT,
     width: "100%",
     justifyContent: "flex-start",
@@ -70,5 +107,20 @@ const overview = StyleSheet.create({
     zIndex: 1,
     paddingTop: 32,
     paddingHorizontal: 32,
+  },
+  header: {
+    rowGap: 8,
+  },
+  addressRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+  },
+  ratings: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    columnGap: 4,
   },
 });

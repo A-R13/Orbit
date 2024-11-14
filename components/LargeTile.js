@@ -10,13 +10,15 @@ export default function LargeTile({ name, rating, image, numReviews }) {
       <Image source={{ uri: image }} style={largeTile.image} />
       <View style={largeTile.tileContent}>
         <Text style={styles.smallText}>{name}</Text>
-        <StarRatingDisplay
-          rating={rating}
-          color={colours.purple}
-          emptyColor={colours.lightPurple}
-          starSize={16}
-        />
-        <Text style={styles.smallText}>({numReviews})</Text>
+        <View style={styles.reviews}>
+          <StarRatingDisplay
+            rating={rating}
+            color={colours.purple}
+            emptyColor={colours.lightPurple}
+            starSize={16}
+          />
+          <Text style={largeTile.reviewText}>{numReviews} Reviews</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -48,5 +50,13 @@ const largeTile = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
     padding: 8,
+  },
+  reviewText: {
+    paddingTop: 2,
+    paddingLeft: 5,
+    color: colours.darkGrey,
+    fontSize: 14,
+    lineHeight: 14,
+    fontWeight: "regular",
   },
 });

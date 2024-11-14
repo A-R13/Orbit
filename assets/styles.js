@@ -51,4 +51,7 @@ export default styles = StyleSheet.create({
     paddingLeft: 15,
     marginTop: 5,
   },
+  reviews: {
+    flexDirection: "row",
+  },
 });

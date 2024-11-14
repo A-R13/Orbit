@@ -17,7 +17,7 @@ export default function SmallTile({ name, rating, image, numReviews }) {
           starSize="14"
           style={styles.stars}
         />
-        <Text style={styles.smallText}>{numReviews}</Text>
+        <Text style={styles.smallText}>({numReviews})</Text>
       </View>
     </TouchableOpacity>
   );

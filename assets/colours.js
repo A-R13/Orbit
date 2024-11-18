@@ -10,4 +10,17 @@ export default colours = {
   moderate: "#8C8C22",
   quiet: "#578C22",
   open: "#228B22",
+  statusToColour: function (status) {
+    if (status <= 1) {
+      return this.open;
+    } else if (status <= 2) {
+      return this.quiet;
+    } else if (status <= 3) {
+      return this.moderate;
+    } else if (status <= 4) {
+      return this.busy;
+    } else {
+      return this.closed;
+    }
+  },
 };

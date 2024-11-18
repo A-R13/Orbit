@@ -51,6 +51,12 @@ export default styles = StyleSheet.create({
     paddingLeft: 15,
     marginTop: 5,
   },
+  dropShadow: {
+    shadowColor: colours.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+  },
   reviews: {
     flexDirection: "row",
     justifyContent: "space-between",

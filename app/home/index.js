@@ -17,25 +17,23 @@ import { Link } from "expo-router";
 import colours from "@colours";
 import { useNavigation } from "expo-router";
 
-export default function SettingsScreen() {
+export default function HomeScreen() {
   const [locations, setlocations] = useState(data.locations);
-  const [recentlyViewed, setRecentlyViewed] = useState();
   const navigation = useNavigation();
-  const UserId = "user_1";
+  const UserId = data.currentUserId;
+  let recentlyViewed = [];
 
   useEffect(() => {
     const user = data.users.find((user) => user.id === UserId);
-    setRecentlyViewed(user.recentlyViewed);
-  }, []);
+    recentlyViewedId = user.recentlyViewed;
+    console.log(recentlyViewedId);
+    recentlyViewed = locations.filter((location) =>
+      recentlyViewedId.includes(location.id)
+    );
+  });
 
-  const addRecentlyViewed = (locationID) => {
-    setRecentlyViewed((prevRecentlyViewed) => {
-      if (prevRecentlyViewed.includes(locationID)) {
-        return prevRecentlyViewed;
-      }
-      return [locationID, ...prevRecentlyViewed];
-    });
-  };
+  console.log(recentlyViewed);
+  // console.log(locations);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -62,9 +60,10 @@ export default function SettingsScreen() {
                 "XS Expresso",
               ].includes(name)
             )
-            .map(({ name, reviews, images }, idx) => (
+            .map(({ id, name, reviews, images }, idx) => (
               <LargeTile
                 key={idx}
+                locationId={id}
                 name={name}
                 rating={
                   reviews.reduce((sum, review) => sum + review.rating, 0) /
@@ -78,13 +77,13 @@ export default function SettingsScreen() {
         <Text style={{ ...styles.contentPadding, ...styles.sectionText }}>
           Recently viewed
         </Text>
-        {/* <ScrollView
+        <ScrollView
           horizontal={true}
           contentContainerStyle={styles.tileContainer}
           showsHorizontalScrollIndicator={false}
           style={styles.horizontalTiles}
         >
-          {locations.map(({ name, reviews, images }, idx) => (
+          {recentlyViewed.map(({ name, reviews, images }, idx) => (
             <LargeTile
               key={idx}
               name={name}
@@ -95,7 +94,7 @@ export default function SettingsScreen() {
               image={images[0]}
             />
           ))}
-        </ScrollView> */}
+        </ScrollView>
 
         <View style={{ ...styles.contentPadding, rowGap: 8 }}>
           <View style={styles.reviews}>

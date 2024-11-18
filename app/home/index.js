@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useCallback } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -10,25 +10,28 @@ import {
 import LargeTile from "components/LargeTile";
 import SmallTile from "components/SmallTile";
 
+import data from "@data";
 import dataHandler from "@dataHandler";
 import styles from "@styles";
-import { Link } from "expo-router";
+import { useFocusEffect } from "expo-router";
 import colours from "@colours";
 import { useNavigation } from "expo-router";
 
 export default function HomeScreen() {
   const [locations, setlocations] = useState(dataHandler.getLocations());
   const navigation = useNavigation();
-  const UserId = data.currentUserId;
   const [recent, setRecent] = useState([]);
 
-  useEffect(() => {
-    const user = data.users.find((user) => user.id === UserId);
-    const recentlyViewedId = user.recentlyViewed;
-    setRecent(
-      locations.filter((location) => recentlyViewedId.includes(location.id))
-    );
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      const user = dataHandler.getUser(data.currentUserId);
+      setRecent(
+        user.recentlyViewed.map((locationId) =>
+          dataHandler.getLocation(locationId)
+        )
+      );
+    }, [])
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -212,7 +215,7 @@ export default function HomeScreen() {
         <View style={{ ...styles.contentPadding, rowGap: 8 }}>
           <View style={styles.reviews}>
             <Text style={styles.sectionText} numberOfLines={2}>
-              Greenary
+              Greenery
             </Text>
             <TouchableOpacity
               style={{
@@ -233,7 +236,7 @@ export default function HomeScreen() {
           style={styles.horizontalTiles}
         >
           {locations
-            .filter(({ categories }) => categories.includes("greenary"))
+            .filter(({ categories }) => categories.includes("greenery"))
             .map(({ id, name, reviews, images }, idx) => (
               <SmallTile
                 key={idx}

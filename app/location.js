@@ -28,29 +28,16 @@ const PANEL_HEIGHT = 500;
 export default function LocationScreen() {
   const screenHeight = Dimensions.get("window").height;
   const [tab, setTab] = useState("Overview");
-  const UserId = data.currentUserId;
   const { locationId } = useLocalSearchParams();
   const location = dataHandler.getLocation(locationId);
 
   useFocusEffect(
     useCallback(() => {
       setTab("Overview");
-    }, [])
+      dataHandler.addRecentlyViewed(data.currentUserId, locationId);
+    }, [locationId])
   );
 
-  // Add locationId to user's recently viewed
-
-  // function addRecentlyViewed(locationID) {
-  //   const user = data.users.find((user) => user.id === UserId);
-  //   recentlyViewed = user.recentlyViewed;
-
-  //   if (!recentlyViewed.includes(locationId)) {
-  //     user.recentlyViewed.push(locationId);
-  //   }
-  //   console.log(user.recentlyViewed);
-  // }
-
-  // addRecentlyViewed(location.id);
   // Render content based on the selected tab
   function renderContent() {
     switch (tab) {

@@ -1,5 +1,5 @@
 {
-  "currentUserId":"user_1",
+  "currentUserId": "user_1",
 
   "users": [
     {
@@ -7,28 +7,28 @@
       "username": "jhernandez",
       "email": "jerome@example.com",
       "password": "hash123",
-      "recentlyViewed":["location_1"]
+      "recentlyViewed": ["location_1"]
     },
     {
       "id": "user_2",
       "username": "arana",
       "email": "aditya@example.com",
       "password": "hash123",
-      "recentlyViewed":[]
+      "recentlyViewed": []
     },
     {
       "id": "user_3",
       "username": "johnAlcantara",
       "email": "john@example.com",
       "password": "hash123",
-      "recentlyViewed":[]
+      "recentlyViewed": []
     },
     {
       "id": "user_4",
       "username": "akankshaKaur",
       "email": "akanksha@example.com",
       "password": "hash123",
-      "recentlyViewed":[]
+      "recentlyViewed": []
     }
   ],
   "locations": [
@@ -41,7 +41,7 @@
       "images": [
         "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/extra_large/public/images/1.%20Main%20Picture_SEB%20Study%20Space.jpg?itok=4w4-h5T4"
       ],
-      "categories":["study"],
+      "categories": ["study"],
       "reviews": [
         {
           "userId": "user_1",
@@ -72,7 +72,7 @@
       "images": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZCF9wzx1sRCxMlwrg4L7F01HmIR3O7AubQ&s"
       ],
-      "categories":["greenary"],
+      "categories": ["greenery"],
       "reviews": [
         {
           "userId": "user_1",
@@ -98,7 +98,7 @@
       "images": [
         "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_desktop/public/images/2023-08-xsespresso-silver.jpg?h=10d202d3&itok=3pgbRqZd"
       ],
-      "categories":["coffee", "food"],
+      "categories": ["coffee", "food"],
       "reviews": [
         {
           "userId": "user_1",
@@ -118,9 +118,11 @@
     {
       "id": "location_4",
       "name": "Colombo",
-      "description":"TBC",
-      "images":["https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/massive/public/images/1.%20Main%20Picture_Colombo%20Study%20Space%20%281%29.jpg?itok=payvVAa_"],
-      "categories":["study"],
+      "description": "TBC",
+      "images": [
+        "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/massive/public/images/1.%20Main%20Picture_Colombo%20Study%20Space%20%281%29.jpg?itok=payvVAa_"
+      ],
+      "categories": ["study"],
       "reviews": [
         {
           "userId": "user_1",
@@ -128,12 +130,12 @@
           "text": "Quiet study space"
         }
       ],
-      "communityNotes":[
+      "communityNotes": [
         {
           "userId": "user_1",
           "text": "Has a lot of powerpoints",
-          "upvotes":["user_3"],
-          "downvotes":[]
+          "upvotes": ["user_3"],
+          "downvotes": []
         }
       ]
     }

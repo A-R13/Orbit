@@ -66,6 +66,20 @@ const dataHandler = {
       dataHandler.saveData();
     }
   },
+
+  addRecentlyViewed: (userId, locationId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      const index = viewer.recentlyViewed.indexOf(locationId);
+      if (index > -1) {
+        // Remove existing entry
+        viewer.recentlyViewed.splice(index, 1);
+      }
+      // Add to the start
+      viewer.recentlyViewed.unshift(locationId);
+      dataHandler.saveData();
+    }
+  },
 };
 
 dataHandler.loadData();

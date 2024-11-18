@@ -112,9 +112,9 @@ export default function LocationScreen() {
 }
 
 function averageRating(reviews) {
-  return (
-    reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
-  );
+  return reviews.length === 0
+    ? 0
+    : reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
 }
 
 function statusToText(status) {

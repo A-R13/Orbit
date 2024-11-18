@@ -23,17 +23,13 @@ export default function HomeScreen() {
   const UserId = data.currentUserId;
   let recentlyViewed = [];
 
-  useEffect(() => {
+  useEffect((recentlyViewed) => {
     const user = data.users.find((user) => user.id === UserId);
-    recentlyViewedId = user.recentlyViewed;
-    console.log(recentlyViewedId);
+    const recentlyViewedId = user.recentlyViewed;
     recentlyViewed = locations.filter((location) =>
       recentlyViewedId.includes(location.id)
     );
   });
-
-  console.log(recentlyViewed);
-  // console.log(locations);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,7 +51,7 @@ export default function HomeScreen() {
           {locations
             .filter(({ name }) =>
               [
-                "Science & Engineering",
+                "Science & Engineering Study Space",
                 "Village Green",
                 "XS Expresso",
               ].includes(name)
@@ -83,9 +79,10 @@ export default function HomeScreen() {
           showsHorizontalScrollIndicator={false}
           style={styles.horizontalTiles}
         >
-          {recentlyViewed.map(({ name, reviews, images }, idx) => (
+          {recentlyViewed.map(({ id, name, reviews, images }, idx) => (
             <LargeTile
               key={idx}
+              locationId={id}
               name={name}
               rating={
                 reviews.reduce((sum, review) => sum + review.rating, 0) /
@@ -121,9 +118,10 @@ export default function HomeScreen() {
         >
           {locations
             .filter(({ categories }) => categories.includes("study"))
-            .map(({ name, reviews, images }, idx) => (
+            .map(({ id, name, reviews, images }, idx) => (
               <SmallTile
                 key={idx}
+                locationId={id}
                 name={name}
                 rating={
                   reviews.reduce((sum, review) => sum + review.rating, 0) /
@@ -159,9 +157,10 @@ export default function HomeScreen() {
         >
           {locations
             .filter(({ categories }) => categories.includes("food"))
-            .map(({ name, reviews, images }, idx) => (
+            .map(({ id, name, reviews, images }, idx) => (
               <SmallTile
                 key={idx}
+                locationId={id}
                 name={name}
                 rating={
                   reviews.reduce((sum, review) => sum + review.rating, 0) /
@@ -197,10 +196,11 @@ export default function HomeScreen() {
         >
           {locations
             .filter(({ categories }) => categories.includes("coffee"))
-            .map(({ name, reviews, images }, idx) => (
+            .map(({ id, name, reviews, images }, idx) => (
               <SmallTile
                 key={idx}
                 name={name}
+                locationId={id}
                 rating={
                   reviews.reduce((sum, review) => sum + review.rating, 0) /
                   reviews.length
@@ -235,9 +235,10 @@ export default function HomeScreen() {
         >
           {locations
             .filter(({ categories }) => categories.includes("greenary"))
-            .map(({ name, reviews, images }, idx) => (
+            .map(({ id, name, reviews, images }, idx) => (
               <SmallTile
                 key={idx}
+                locationId={id}
                 name={name}
                 rating={
                   reviews.reduce((sum, review) => sum + review.rating, 0) /

@@ -32,7 +32,6 @@ export default function LocationScreen() {
   const location = data.locations.find(
     (location) => location.id === locationId
   );
-
   useFocusEffect(
     useCallback(() => {
       setTab("Overview");
@@ -41,17 +40,17 @@ export default function LocationScreen() {
 
   // Add locationId to user's recently viewed
 
-  function addRecentlyViewed(locationID) {
-    const user = data.users.find((user) => user.id === UserId);
-    recentlyViewed = user.recentlyViewed;
+  // function addRecentlyViewed(locationID) {
+  //   const user = data.users.find((user) => user.id === UserId);
+  //   recentlyViewed = user.recentlyViewed;
 
-    if (!recentlyViewed.includes(locationId)) {
-      user.recentlyViewed.push(locationId);
-    }
-    console.log(user.recentlyViewed);
-  }
+  //   if (!recentlyViewed.includes(locationId)) {
+  //     user.recentlyViewed.push(locationId);
+  //   }
+  //   console.log(user.recentlyViewed);
+  // }
 
-  addRecentlyViewed(location.id);
+  // addRecentlyViewed(location.id);
   // Render content based on the selected tab
   function renderContent() {
     switch (tab) {

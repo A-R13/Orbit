@@ -1,26 +1,43 @@
-import { Text, TouchableOpacity, Image, StyleSheet, View } from "react-native";
+import { Text, Image, StyleSheet, View, Pressable } from "react-native";
+import { Link } from "expo-router";
+
 import { StarRatingDisplay } from "react-native-star-rating-widget";
 
 import styles from "@styles";
 import colours from "@colours";
 
-export default function SmallTile({ name, rating, image, numReviews }) {
+export default function SmallTile({
+  locationId,
+  name,
+  rating,
+  image,
+  numReviews,
+}) {
   return (
-    <TouchableOpacity style={smallTile.smallTile}>
-      <Image source={{ uri: image }} style={smallTile.smallImage} />
-      <View style={smallTile.tileContent}>
-        <Text style={styles.smallText}>{name}</Text>
-        <View style={styles.reviews}>
-          <StarRatingDisplay
-            rating={rating}
-            color={colours.purple}
-            emptyColor={colours.lightPurple}
-            starSize={13}
-          />
-          <Text style={smallTile.reviewText}>({numReviews})</Text>
+    <Link
+      push
+      href={{
+        pathname: "/location",
+        params: { locationId },
+      }}
+      asChild
+    >
+      <Pressable style={smallTile.smallTile}>
+        <Image source={{ uri: image }} style={smallTile.smallImage} />
+        <View style={smallTile.tileContent}>
+          <Text style={styles.smallText}>{name}</Text>
+          <View style={styles.reviews}>
+            <StarRatingDisplay
+              rating={rating}
+              color={colours.purple}
+              emptyColor={colours.lightPurple}
+              starSize={13}
+            />
+            <Text style={smallTile.reviewText}>({numReviews})</Text>
+          </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </Pressable>
+    </Link>
   );
 }
 

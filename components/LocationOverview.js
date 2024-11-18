@@ -3,7 +3,6 @@ import { Text, View, ScrollView, StyleSheet } from "react-native";
 import YesNoButtonGroup from "./YesNoButtonGroup";
 
 import styles from "@styles";
-import colours from "@colours";
 
 export default function LocationOverview({ location }) {
   return (

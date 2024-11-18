@@ -3,11 +3,11 @@ import { SafeAreaView, ScrollView, View, Text } from "react-native";
 
 import LargeTile from "components/LargeTile";
 
-import data from "@data";
+import dataHandler from "@dataHandler";
 import styles from "@styles";
 
 export default function HomeScreen() {
-  const [locations, setlocations] = useState(data.locations);
+  const [locations, setlocations] = useState(dataHandler.getLocations());
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>

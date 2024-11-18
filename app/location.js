@@ -9,6 +9,7 @@ import { useState, useCallback } from "react";
 import { StarRatingDisplay } from "react-native-star-rating-widget";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 import SavedButton from "components/SavedButton";
 import LocationTabBar from "components/LocationTabBar";
@@ -65,14 +66,30 @@ export default function LocationScreen() {
           <Text style={styles.sectionText} numberOfLines={2}>
             {location.name}
           </Text>
-          <View style={overview.addressRow}>
+          <View style={[overview.row, overview.address]}>
             <Ionicons name="location-sharp" size={24} color={colours.black} />
             <Text style={[styles.smallText, { flex: 1 }]} numberOfLines={2}>
               {location.address}
             </Text>
             <SavedButton />
           </View>
-          <View style={overview.ratings}>
+          <View style={overview.row}>
+            <MaterialCommunityIcons
+              name="record-circle-outline"
+              size={24}
+              color={colours.black}
+            />
+            <Text style={styles.smallText}>Live:</Text>
+            <Text
+              style={[
+                styles.smallText,
+                { color: colours.statusToColour(location.status) },
+              ]}
+            >
+              {statusToText(location.status)}
+            </Text>
+          </View>
+          <View style={overview.row}>
             <Text style={styles.smallText}>
               {(Math.floor(averageRating(location.reviews) * 2) / 2).toFixed(1)}
             </Text>
@@ -98,6 +115,20 @@ function averageRating(reviews) {
   return (
     reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
   );
+}
+
+function statusToText(status) {
+  if (status <= 1) {
+    return "Very quiet";
+  } else if (status <= 2) {
+    return "Quiet";
+  } else if (status <= 3) {
+    return "Moderate";
+  } else if (status <= 4) {
+    return "Busy";
+  } else {
+    return "Very busy";
+  }
 }
 
 const overview = StyleSheet.create({
@@ -132,16 +163,13 @@ const overview = StyleSheet.create({
   header: {
     rowGap: 8,
   },
-  addressRow: {
+  row: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-  },
-  ratings: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
     alignItems: "center",
     columnGap: 4,
+  },
+  address: {
+    justifyContent: "space-between",
+    width: "100%",
   },
 });

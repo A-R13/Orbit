@@ -21,15 +21,15 @@ export default function HomeScreen() {
   const [locations, setlocations] = useState(data.locations);
   const navigation = useNavigation();
   const UserId = data.currentUserId;
-  let recentlyViewed = [];
+  const [recent, setRecent] = useState([]);
 
-  useEffect((recentlyViewed) => {
+  useEffect(() => {
     const user = data.users.find((user) => user.id === UserId);
     const recentlyViewedId = user.recentlyViewed;
-    recentlyViewed = locations.filter((location) =>
-      recentlyViewedId.includes(location.id)
+    setRecent(
+      locations.filter((location) => recentlyViewedId.includes(location.id))
     );
-  });
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -79,7 +79,7 @@ export default function HomeScreen() {
           showsHorizontalScrollIndicator={false}
           style={styles.horizontalTiles}
         >
-          {recentlyViewed.map(({ id, name, reviews, images }, idx) => (
+          {recent.map(({ id, name, reviews, images }, idx) => (
             <LargeTile
               key={idx}
               locationId={id}

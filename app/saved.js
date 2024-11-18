@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-export default function SettingsScreen() {
+export default function SavedScreen() {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Saved Screen</Text>

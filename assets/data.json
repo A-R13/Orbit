@@ -28,7 +28,9 @@
   "locations": [
     {
       "id": "location_1",
-      "name": "Science & Engineering",
+      "name": "Science & Engineering Study Space",
+      "address": "Science and Engineering Building (E8)",
+      "status": 1,
       "description": "Building ID K-E8",
       "images": [
         "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/extra_large/public/images/1.%20Main%20Picture_SEB%20Study%20Space.jpg?itok=4w4-h5T4"
@@ -57,6 +59,8 @@
     {
       "id": "location_2",
       "name": "Village Green",
+      "address": "TBC",
+      "status": 2,
       "description": "TBC",
       "images": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZCF9wzx1sRCxMlwrg4L7F01HmIR3O7AubQ&s"
@@ -80,6 +84,8 @@
     {
       "id": "location_3",
       "name": "XS Expresso",
+      "address": "TBC",
+      "status": 3,
       "description": "TBC",
       "images": [
         "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_desktop/public/images/2023-08-xsespresso-silver.jpg?h=10d202d3&itok=3pgbRqZd"

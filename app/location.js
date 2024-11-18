@@ -14,6 +14,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SavedButton from "components/SavedButton";
 import LocationTabBar from "components/LocationTabBar";
 import LocationOverview from "components/LocationOverview";
+import LocationReviews from "components/LocationReviews";
 
 import data from "@data";
 import styles from "@styles";
@@ -57,7 +58,7 @@ export default function LocationScreen() {
       case "Notes":
         return <Text style={styles.smallText}>Notes</Text>;
       case "Reviews":
-        return <Text style={styles.smallText}>Reviews</Text>;
+        return <LocationReviews location={location} />;
       default:
         return <LocationOverview location={location} />;
     }

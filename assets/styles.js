@@ -53,5 +53,6 @@ export default styles = StyleSheet.create({
   },
   reviews: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

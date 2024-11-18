@@ -17,7 +17,7 @@ export default function LargeTile({ name, rating, image, numReviews }) {
             emptyColor={colours.lightPurple}
             starSize={16}
           />
-          <Text style={largeTile.reviewText}>{numReviews} Reviews</Text>
+          <Text style={largeTile.reviewText}>{numReviews} Review/s</Text>
         </View>
       </View>
     </TouchableOpacity>

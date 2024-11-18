@@ -4,25 +4,29 @@
       "id": "user_1",
       "username": "jhernandez",
       "email": "jerome@example.com",
-      "password": "hash123"
+      "password": "hash123",
+      "recentlyViewed":[]
     },
     {
       "id": "user_2",
       "username": "arana",
       "email": "aditya@example.com",
-      "password": "hash123"
+      "password": "hash123",
+      "recentlyViewed":[]
     },
     {
       "id": "user_3",
       "username": "johnAlcantara",
       "email": "john@example.com",
-      "password": "hash123"
+      "password": "hash123",
+      "recentlyViewed":[]
     },
     {
       "id": "user_4",
       "username": "akankshaKaur",
       "email": "akanksha@example.com",
-      "password": "hash123"
+      "password": "hash123",
+      "recentlyViewed":[]
     }
   ],
   "locations": [
@@ -100,6 +104,28 @@
           "text": "Located on the Ground Floor of Biological Sciences Building (D26)",
           "upvotes": ["user_2"],
           "downvotes": []
+        }
+      ]
+    },
+    {
+      "id": "location_4",
+      "name": "Colombo",
+      "description":"TBC",
+      "images":["https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/massive/public/images/1.%20Main%20Picture_Colombo%20Study%20Space%20%281%29.jpg?itok=payvVAa_"],
+      "categories":["study"],
+      "reviews": [
+        {
+          "userId": "user_1",
+          "rating": 4.0,
+          "text": "Quiet study space"
+        }
+      ],
+      "communityNotes":[
+        {
+          "userId": "user_1",
+          "text": "Has a lot of powerpoints",
+          "upvotes":["user_3"],
+          "downvotes":[]
         }
       ]
     }

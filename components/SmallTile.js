@@ -10,14 +10,15 @@ export default function SmallTile({ name, rating, image, numReviews }) {
       <Image source={{ uri: image }} style={smallTile.smallImage} />
       <View style={smallTile.tileContent}>
         <Text style={styles.smallText}>{name}</Text>
-        <StarRatingDisplay
-          rating={rating}
-          color="#5928ED"
-          emptyColor="#A489F5"
-          starSize="14"
-          style={styles.stars}
-        />
-        <Text style={styles.smallText}>({numReviews})</Text>
+        <View style={styles.reviews}>
+          <StarRatingDisplay
+            rating={rating}
+            color={colours.purple}
+            emptyColor={colours.lightPurple}
+            starSize={13}
+          />
+          <Text style={smallTile.reviewText}>({numReviews})</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -49,5 +50,11 @@ const smallTile = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
     padding: 8,
+  },
+  reviewText: {
+    color: colours.darkGrey,
+    fontSize: 12,
+    lineHeight: 12,
+    fontWeight: "regular",
   },
 });

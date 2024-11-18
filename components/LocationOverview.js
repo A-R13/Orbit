@@ -24,7 +24,6 @@ export default function LocationOverview({ location }) {
           <YesNoButtonGroup onYes={() => {}} onNo={() => {}} />
         </View>
       </View>
-      <Text style={{ marginTop: 300 }}>Text</Text>
     </ScrollView>
   );
 }

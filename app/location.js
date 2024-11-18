@@ -17,6 +17,7 @@ import LocationOverview from "components/LocationOverview";
 import LocationReviews from "components/LocationReviews";
 
 import data from "@data";
+import dataHandler from "@dataHandler";
 import styles from "@styles";
 import colours from "@colours";
 
@@ -29,9 +30,8 @@ export default function LocationScreen() {
   const [tab, setTab] = useState("Overview");
   const UserId = data.currentUserId;
   const { locationId } = useLocalSearchParams();
-  const location = data.locations.find(
-    (location) => location.id === locationId
-  );
+  const location = dataHandler.getLocation(locationId);
+
   useFocusEffect(
     useCallback(() => {
       setTab("Overview");

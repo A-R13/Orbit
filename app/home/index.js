@@ -4,21 +4,20 @@ import {
   ScrollView,
   View,
   Text,
-  Touchable,
   TouchableOpacity,
 } from "react-native";
 
 import LargeTile from "components/LargeTile";
 import SmallTile from "components/SmallTile";
 
-import data from "@data";
+import dataHandler from "@dataHandler";
 import styles from "@styles";
 import { Link } from "expo-router";
 import colours from "@colours";
 import { useNavigation } from "expo-router";
 
 export default function HomeScreen() {
-  const [locations, setlocations] = useState(data.locations);
+  const [locations, setlocations] = useState(dataHandler.getLocations());
   const navigation = useNavigation();
   const UserId = data.currentUserId;
   const [recent, setRecent] = useState([]);

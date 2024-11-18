@@ -90,6 +90,7 @@ export default function HomeScreen() {
                 reviews.reduce((sum, review) => sum + review.rating, 0) /
                 reviews.length
               }
+              numReviews={reviews.length}
               image={images[0]}
             />
           ))}

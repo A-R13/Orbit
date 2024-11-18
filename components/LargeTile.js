@@ -32,7 +32,9 @@ export default function LargeTile({
               emptyColor={colours.lightPurple}
               starSize={16}
             />
-            <Text style={largeTile.reviewText}>{numReviews} Review/s</Text>
+            <Text style={largeTile.reviewText}>
+              {numReviews} review{numReviews === 1 ? "" : "s"}
+            </Text>
           </View>
         </View>
       </Pressable>

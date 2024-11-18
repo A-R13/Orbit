@@ -47,7 +47,7 @@ export default function RootLayout() {
           ),
         }}
       />
-      <Tabs.Screen name="location/index" options={{ href: null }} />
+      <Tabs.Screen name="location" options={{ href: null }} />
       <Tabs.Screen name="index" options={{ href: null }} />
     </Tabs>
   );

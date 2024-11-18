@@ -12,6 +12,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import SavedButton from "components/SavedButton";
 import LocationTabBar from "components/LocationTabBar";
+import LocationOverview from "components/LocationOverview";
 
 import data from "@data";
 import styles from "@styles";
@@ -21,7 +22,7 @@ import BackButton from "components/BackButton";
 
 const BORDER_RADIUS = 40;
 const PANEL_HEIGHT = 500;
-export default function LocationOverview() {
+export default function LocationScreen() {
   const screenHeight = Dimensions.get("window").height;
   const [tab, setTab] = useState("Overview");
 
@@ -44,7 +45,7 @@ export default function LocationOverview() {
       case "Reviews":
         return <Text style={styles.smallText}>Reviews</Text>;
       default:
-        return <Text style={styles.smallText}>Overview</Text>;
+        return <LocationOverview location={location} />;
     }
   }
 

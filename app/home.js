@@ -1,25 +1,16 @@
 import { useState, useCallback } from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { SafeAreaView, ScrollView, View, Text } from "react-native";
+import { useFocusEffect } from "expo-router";
 
 import LargeTile from "components/LargeTile";
 import SmallTile from "components/SmallTile";
+import HomeSection from "components/HomeSection";
 
 import data from "@data";
 import dataHandler from "@dataHandler";
 import styles from "@styles";
-import { useFocusEffect } from "expo-router";
-import colours from "@colours";
-import { useNavigation } from "expo-router";
 
 export default function HomeScreen() {
-  const [locations, setlocations] = useState(dataHandler.getLocations());
-  const navigation = useNavigation();
   const [recent, setRecent] = useState([]);
 
   useFocusEffect(
@@ -50,7 +41,8 @@ export default function HomeScreen() {
           contentContainerStyle={styles.tileContainer}
           style={styles.horizontalTiles}
         >
-          {locations
+          {dataHandler
+            .getLocations()
             .filter(({ name }) =>
               [
                 "Science & Engineering Study Space",
@@ -72,6 +64,8 @@ export default function HomeScreen() {
               />
             ))}
         </ScrollView>
+
+        {/* Recently viewed section */}
         <Text style={{ ...styles.contentPadding, ...styles.sectionText }}>
           Recently viewed
         </Text>
@@ -96,162 +90,11 @@ export default function HomeScreen() {
           ))}
         </ScrollView>
 
-        <View style={{ ...styles.contentPadding, rowGap: 8 }}>
-          <View style={styles.reviews}>
-            <Text style={styles.sectionText} numberOfLines={2}>
-              Study
-            </Text>
-            <TouchableOpacity
-              style={{
-                alignSelf: "flex-end",
-              }}
-              onPress={() => navigation.navigate("search")}
-            >
-              <Text style={{ color: colours.purple, fontSize: 16 }}>
-                View All
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <ScrollView
-          horizontal={true}
-          contentContainerStyle={styles.tileContainer}
-          showsHorizontalScrollIndicator={false}
-          style={styles.horizontalTiles}
-        >
-          {locations
-            .filter(({ categories }) => categories.includes("study"))
-            .map(({ id, name, reviews, images }, idx) => (
-              <SmallTile
-                key={idx}
-                locationId={id}
-                name={name}
-                rating={
-                  reviews.reduce((sum, review) => sum + review.rating, 0) /
-                  reviews.length
-                }
-                numReviews={reviews.length}
-                image={images[0]}
-              />
-            ))}
-        </ScrollView>
-        <View style={{ ...styles.contentPadding, rowGap: 8 }}>
-          <View style={styles.reviews}>
-            <Text style={styles.sectionText} numberOfLines={2}>
-              Food
-            </Text>
-            <TouchableOpacity
-              style={{
-                alignSelf: "flex-end",
-              }}
-              onPress={() => navigation.navigate("search")}
-            >
-              <Text style={{ color: colours.purple, fontSize: 16 }}>
-                View All
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <ScrollView
-          horizontal={true}
-          contentContainerStyle={styles.tileContainer}
-          showsHorizontalScrollIndicator={false}
-          style={styles.horizontalTiles}
-        >
-          {locations
-            .filter(({ categories }) => categories.includes("food"))
-            .map(({ id, name, reviews, images }, idx) => (
-              <SmallTile
-                key={idx}
-                locationId={id}
-                name={name}
-                rating={
-                  reviews.reduce((sum, review) => sum + review.rating, 0) /
-                  reviews.length
-                }
-                numReviews={reviews.length}
-                image={images[0]}
-              />
-            ))}
-        </ScrollView>
-        <View style={{ ...styles.contentPadding, rowGap: 8 }}>
-          <View style={styles.reviews}>
-            <Text style={styles.sectionText} numberOfLines={2}>
-              Coffee
-            </Text>
-            <TouchableOpacity
-              style={{
-                alignSelf: "flex-end",
-              }}
-              onPress={() => navigation.navigate("search")}
-            >
-              <Text style={{ color: colours.purple, fontSize: 16 }}>
-                View All
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <ScrollView
-          horizontal={true}
-          contentContainerStyle={styles.tileContainer}
-          showsHorizontalScrollIndicator={false}
-          style={styles.horizontalTiles}
-        >
-          {locations
-            .filter(({ categories }) => categories.includes("coffee"))
-            .map(({ id, name, reviews, images }, idx) => (
-              <SmallTile
-                key={idx}
-                name={name}
-                locationId={id}
-                rating={
-                  reviews.reduce((sum, review) => sum + review.rating, 0) /
-                  reviews.length
-                }
-                numReviews={reviews.length}
-                image={images[0]}
-              />
-            ))}
-        </ScrollView>
-        <View style={{ ...styles.contentPadding, rowGap: 8 }}>
-          <View style={styles.reviews}>
-            <Text style={styles.sectionText} numberOfLines={2}>
-              Greenery
-            </Text>
-            <TouchableOpacity
-              style={{
-                alignSelf: "flex-end",
-              }}
-              onPress={() => navigation.navigate("search")}
-            >
-              <Text style={{ color: colours.purple, fontSize: 16 }}>
-                View All
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <ScrollView
-          horizontal={true}
-          contentContainerStyle={styles.tileContainer}
-          showsHorizontalScrollIndicator={false}
-          style={styles.horizontalTiles}
-        >
-          {locations
-            .filter(({ categories }) => categories.includes("greenery"))
-            .map(({ id, name, reviews, images }, idx) => (
-              <SmallTile
-                key={idx}
-                locationId={id}
-                name={name}
-                rating={
-                  reviews.reduce((sum, review) => sum + review.rating, 0) /
-                  reviews.length
-                }
-                numReviews={reviews.length}
-                image={images[0]}
-              />
-            ))}
-        </ScrollView>
+        {/* Other category sections */}
+        <HomeSection category={"Study"} />
+        <HomeSection category={"Food"} />
+        <HomeSection category={"Coffee"} />
+        <HomeSection category={"Greenery"} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -24,7 +24,9 @@ export default function LargeTile({
       <Pressable style={largeTile.largeTile}>
         <Image source={{ uri: image }} style={largeTile.image} />
         <View style={largeTile.tileContent}>
-          <Text style={styles.smallText}>{name}</Text>
+          <Text style={styles.smallText} numberOfLines={1}>
+            {name}
+          </Text>
           <View style={styles.reviews}>
             <StarRatingDisplay
               rating={rating}
@@ -32,7 +34,9 @@ export default function LargeTile({
               emptyColor={colours.lightPurple}
               starSize={16}
             />
-            <Text style={largeTile.reviewText}>{numReviews} Review/s</Text>
+            <Text style={largeTile.reviewText}>
+              {numReviews} review{numReviews === 1 ? "" : "s"}
+            </Text>
           </View>
         </View>
       </Pressable>

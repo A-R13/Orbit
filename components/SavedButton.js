@@ -1,7 +1,6 @@
 import { Pressable, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import styles from "@styles";
 import colours from "@colours";
 
 export default function SavedButton() {

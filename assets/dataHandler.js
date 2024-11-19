@@ -11,7 +11,10 @@ const dataHandler = {
     try {
       const storedData = await AsyncStorage.getItem(DATA_STORE_KEY);
       if (storedData) {
+        console.log("Loading data");
         memoryData = JSON.parse(storedData);
+      } else {
+        await AsyncStorage.setItem(DATA_STORE_KEY, JSON.stringify(data));
       }
     } catch (error) {
       console.error("Failed to load data:", error);
@@ -22,9 +25,19 @@ const dataHandler = {
   saveData: async () => {
     try {
       await AsyncStorage.setItem(DATA_STORE_KEY, JSON.stringify(memoryData));
+      console.log("Saving data");
     } catch (error) {
       console.error("Failed to save data:", error);
     }
+  },
+
+  clearAll: async () => {
+    try {
+      await AsyncStorage.clear();
+    } catch (error) {
+      console.error("Clear error:", error);
+    }
+    console.log("Cleared all data");
   },
 
   // Get all users
@@ -53,6 +66,35 @@ const dataHandler = {
       dataHandler.saveData();
     }
   },
+
+  addRecentlyViewed: (userId, locationId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      const index = viewer.recentlyViewed.indexOf(locationId);
+      if (index > -1) {
+        // Remove existing entry
+        viewer.recentlyViewed.splice(index, 1);
+      }
+      // Add to the start
+      viewer.recentlyViewed.unshift(locationId);
+
+      // Keep recently viewed to 5 items
+      if (viewer.recentlyViewed.length > 5) {
+        viewer.recentlyViewed.pop();
+      }
+      dataHandler.saveData();
+    }
+  },
+
+  clearRecentlyViewed: (userId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      viewer.recentlyViewed = [];
+      dataHandler.saveData();
+    }
+  },
 };
+
+dataHandler.loadData();
 
 export default dataHandler;

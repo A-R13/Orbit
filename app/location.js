@@ -100,7 +100,8 @@ export default function LocationScreen() {
               starSize={16}
             />
             <Text style={[styles.smallText, { color: colours.darkGrey }]}>
-              {location.reviews.length} reviews
+              {location.reviews.length} review
+              {location.reviews.length === 1 ? "" : "s"}
             </Text>
           </View>
         </View>

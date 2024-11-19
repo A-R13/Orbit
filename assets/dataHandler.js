@@ -77,6 +77,11 @@ const dataHandler = {
       }
       // Add to the start
       viewer.recentlyViewed.unshift(locationId);
+
+      // Keep recently viewed to 5 items
+      if (viewer.recentlyViewed.length > 5) {
+        viewer.recentlyViewed.pop();
+      }
       dataHandler.saveData();
     }
   },

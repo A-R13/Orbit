@@ -82,7 +82,7 @@ export default function HomeScreen() {
           style={styles.horizontalTiles}
         >
           {recent.map(({ id, name, reviews, images }, idx) => (
-            <LargeTile
+            <SmallTile
               key={idx}
               locationId={id}
               name={name}

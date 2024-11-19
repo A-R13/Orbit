@@ -24,7 +24,9 @@ export default function LargeTile({
       <Pressable style={largeTile.largeTile}>
         <Image source={{ uri: image }} style={largeTile.image} />
         <View style={largeTile.tileContent}>
-          <Text style={styles.smallText}>{name}</Text>
+          <Text style={styles.smallText} numberOfLines={1}>
+            {name}
+          </Text>
           <View style={styles.reviews}>
             <StarRatingDisplay
               rating={rating}

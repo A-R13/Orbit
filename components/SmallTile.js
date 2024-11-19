@@ -25,7 +25,7 @@ export default function SmallTile({
       <Pressable style={smallTile.smallTile}>
         <Image source={{ uri: image }} style={smallTile.smallImage} />
         <View style={smallTile.tileContent}>
-          <Text style={styles.smallText} numberOfLines={1}>
+          <Text style={styles.smallText} numberOfLines={2}>
             {name}
           </Text>
           <View style={styles.reviews}>

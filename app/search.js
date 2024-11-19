@@ -8,6 +8,7 @@ import {
   Keyboard,
 } from "react-native";
 import { useEffect, useState } from "react";
+import { useFocusEffect, useLocalSearchParams } from "expo-router";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 import colours from "@colours";
@@ -16,9 +17,21 @@ import SearchTile from "components/SearchTile";
 import data from "@data";
 
 export default function SearchScreen() {
-  const [tab, setTab] = useState("All");
+  const [tab, setTab] = useState("");
   const [locations, setlocations] = useState(data.locations);
   const [search, setSearch] = useState("");
+  const { category, date } = useLocalSearchParams();
+  useEffect(() => {
+    if (category === "Study") {
+      setTab("Study");
+    } else if (category === "Food" || category === "Coffee") {
+      setTab("Eat");
+    } else if (category === "Greenery") {
+      setTab("Relax");
+    } else if (category === "All") {
+      setTab("All");
+    }
+  }, [date]);
 
   // Search bar and categories
   useEffect(() => {
@@ -56,7 +69,7 @@ export default function SearchScreen() {
           (location) =>
             location.name.toLowerCase().includes(search.toLowerCase()) &&
             location.categories.some((category) =>
-              category.toLowerCase().includes("greenary")
+              category.toLowerCase().includes("greenery")
             )
         )
       );

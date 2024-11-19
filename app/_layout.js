@@ -28,6 +28,7 @@ export default function RootLayout() {
             <Ionicons name="search-outline" size={size} color={color} />
           ),
         }}
+        initialParams={{ category: "All" }} // Pass the category here
       />
       <Tabs.Screen
         name="saved"

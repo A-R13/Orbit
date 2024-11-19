@@ -1,5 +1,6 @@
 import { ScrollView, View, Text } from "react-native";
 import { Link } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 import SmallTile from "components/SmallTile";
 
@@ -7,18 +8,28 @@ import dataHandler from "@dataHandler";
 import styles from "@styles";
 
 export default function HomeCategory({ category }) {
+  const navigation = useNavigation();
+
+  const handleLinkClick = () => {
+    const currentDateTime = new Date().toISOString();
+    navigation.navigate("search", {
+      category,
+      date: currentDateTime,
+    });
+  };
+
   return (
     <>
       <View style={[styles.contentPadding, styles.reviews]}>
         <Text style={styles.sectionText} numberOfLines={2}>
           {category}
         </Text>
-        <Link
-          href={"search"}
+        <Text
+          onPress={handleLinkClick}
           style={[styles.smallText, { color: colours.purple }]}
         >
           View All
-        </Link>
+        </Text>
       </View>
       <ScrollView
         horizontal={true}

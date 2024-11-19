@@ -85,6 +85,14 @@ const dataHandler = {
       dataHandler.saveData();
     }
   },
+
+  clearRecentlyViewed: (userId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      viewer.recentlyViewed = [];
+      dataHandler.saveData();
+    }
+  },
 };
 
 dataHandler.loadData();

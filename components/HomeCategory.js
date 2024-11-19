@@ -6,7 +6,7 @@ import SmallTile from "components/SmallTile";
 import dataHandler from "@dataHandler";
 import styles from "@styles";
 
-export default function HomeSection({ category }) {
+export default function HomeCategory({ category }) {
   return (
     <>
       <View style={[styles.contentPadding, styles.reviews]}>

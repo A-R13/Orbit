@@ -31,11 +31,17 @@ export default function LocationScreen() {
   const [tab, setTab] = useState("Overview");
   const { locationId } = useLocalSearchParams();
   const location = dataHandler.getLocation(locationId);
+  const [bookmark, setBookmark] = useState(
+    dataHandler.getUser(data.currentUserId).bookmarks.includes(locationId)
+  );
 
   useFocusEffect(
     useCallback(() => {
       setTab("Overview");
       dataHandler.addRecentlyViewed(data.currentUserId, locationId);
+      setBookmark(
+        dataHandler.getUser(data.currentUserId).bookmarks.includes(locationId)
+      );
     }, [locationId])
   );
 
@@ -72,7 +78,11 @@ export default function LocationScreen() {
             <Text style={[styles.smallText, { flex: 1 }]} numberOfLines={2}>
               {location.address}
             </Text>
-            <SavedButton />
+            <SavedButton
+              locationId={locationId}
+              bookmark={bookmark}
+              setBookmark={setBookmark}
+            />
           </View>
           <View style={overview.row}>
             <MaterialCommunityIcons

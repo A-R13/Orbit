@@ -17,11 +17,24 @@ export default function LocationOverview({ location }) {
       </View>
       <View style={locationOverview.section}>
         <Text style={styles.sectionText}>Top-rated community note</Text>
-        <Text style={styles.smallText}>TBC</Text>
-        <View style={locationOverview.helpful}>
-          <Text style={styles.smallText}>Is this note helpful?</Text>
-          <YesNoButtonGroup onYes={() => {}} onNo={() => {}} />
-        </View>
+        <Text style={styles.smallText}>
+          {location.communityNotes.length > 0
+            ? location.communityNotes.reduce((highest, current) => {
+                const currentScore =
+                  current.upvotes.length - current.downvotes.length;
+                const highestScore =
+                  highest.upvotes.length - highest.downvotes.length;
+
+                return currentScore > highestScore ? current : highest;
+              }, location.communityNotes[0]).text
+            : "No community notes posted."}
+        </Text>
+        {location.communityNotes.length > 0 && (
+          <View style={locationOverview.helpful}>
+            <Text style={styles.smallText}>Is this note helpful?</Text>
+            <YesNoButtonGroup onYes={() => {}} onNo={() => {}} />
+          </View>
+        )}
       </View>
     </ScrollView>
   );

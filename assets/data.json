@@ -94,7 +94,7 @@
       "name": "XS Expresso",
       "address": "TBC",
       "status": 3,
-      "description": "TBC",
+      "description": "XS Espresso, located in the Biological Sciences Building, Upper Campus, is a lively, semi-outdoor cafe that offers a diverse selection of fusion breakfasts, lunches, dinner and desserts. Named Australian Cafe of the Year in 2018, XS Espresso are well known for their delicious shakes; the Cronut, the Pistachio, and the Golden Gaytime, just to name a few. The cafe proudly serves Campos coffee and is a great spot to catch up with friends over delicious food. Open every day.",
       "images": [
         "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_desktop/public/images/2023-08-xsespresso-silver.jpg?h=10d202d3&itok=3pgbRqZd"
       ],
@@ -109,7 +109,13 @@
       "communityNotes": [
         {
           "userId": "user_1",
-          "text": "Located on the Ground Floor of Biological Sciences Building (D26)",
+          "text": "Includes vegan options",
+          "upvotes": [],
+          "downvotes": []
+        },
+        {
+          "userId": "user_2",
+          "text": "30c Discount for bring your own cups.",
           "upvotes": ["user_2"],
           "downvotes": []
         }
@@ -117,22 +123,15 @@
     },
     {
       "id": "location_4",
-      "name": "Colombo",
-      "address": "TBC",
-      "description": "TBC",
+      "name": "Colombo Study Space",
+      "address": "Colombo House (B16)",
+      "description": "Seating capacity: 109",
       "images": [
         "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/massive/public/images/1.%20Main%20Picture_Colombo%20Study%20Space%20%281%29.jpg?itok=payvVAa_"
       ],
       "categories": ["Study"],
       "reviews": [],
-      "communityNotes": [
-        {
-          "userId": "user_1",
-          "text": "Has a lot of powerpoints",
-          "upvotes": ["user_3"],
-          "downvotes": []
-        }
-      ]
+      "communityNotes": []
     }
   ]
 }

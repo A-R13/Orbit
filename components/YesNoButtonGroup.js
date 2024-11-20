@@ -24,7 +24,7 @@ const buttonGroup = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colours.white,
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
     paddingVertical: 8,
   },
   left: {

@@ -20,7 +20,10 @@ export default function LocationNotes({ location }) {
       {location.communityNotes.map(
         ({ userId, text, upvotes, downvotes }, idx) => (
           <View style={locationNotes.note} key={idx}>
-            <Text style={styles.smallText}>
+            <Text
+              style={[styles.smallText, { fontWeight: "bold" }]}
+              numberOfLines={1}
+            >
               {dataHandler.getUser(userId).username}
             </Text>
             <Text style={styles.smallText}>{text}</Text>

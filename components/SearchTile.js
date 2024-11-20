@@ -16,32 +16,33 @@ export default function SearchTile({
   status,
   image,
   numReviews,
+  bookmarks,
+  setBookmarks,
 }) {
-  // const user = dataHandler.getUser(data.currentUserId);
-  // const [bookmarks, setBookmarks] = useState(user.bookmarks);
-  // const [bookmark, setBookmark] = useState(user.bookmarks.includes(locationId));
+  const user = dataHandler.getUser(data.currentUserId);
 
-  // useEffect(() => {
-  //   if (user.bookmarks.includes(locationId)) {
-  //     setBookmark(true);
-  //   } else {
-  //     setBookmark(false);
-  //   }
-  // }, [locationId]);
+  const [bookmark, setBookmark] = useState(bookmarks.includes(locationId));
 
-  // const toggleBookmark = () => {
-  //   setBookmark(!bookmark);
-  //   const check = dataHandler.getUser(data.currentUserId);
-  //   if (bookmark === true) {
-  //     dataHandler.addBookmark(data.currentUserId, locationId);
-  //     setBookmarks((prevBookmarks) => [...prevBookmarks, locationId]);
-  //   } else if (bookmark == false) {
-  //     dataHandler.removeBookmark(data.currentUserId, locationId);
-  //     setBookmarks((prevBookmarks) =>
-  //       prevBookmarks.filter((id) => id !== locationId)
-  //     );
-  //   }
-  // };
+  useEffect(() => {
+    if (bookmarks.includes(locationId)) {
+      setBookmark(true);
+    } else {
+      setBookmark(false);
+    }
+  }, [locationId]);
+
+  const toggleBookmark = () => {
+    if (bookmark === true) {
+      dataHandler.removeBookmark(data.currentUserId, locationId);
+      setBookmarks((prevBookmarks) => [...prevBookmarks, locationId]);
+    } else if (bookmark == false) {
+      dataHandler.addBookmark(data.currentUserId, locationId);
+      setBookmarks((prevBookmarks) =>
+        prevBookmarks.filter((id) => id !== locationId)
+      );
+    }
+    setBookmark(!bookmark);
+  };
   function statusToText(status) {
     if (status <= 1) {
       return "Very quiet";
@@ -68,14 +69,14 @@ export default function SearchTile({
       <Pressable style={searchTile.searchTile}>
         <View style={searchTile.overlay}>
           <Image source={{ uri: image }} style={searchTile.smallImage} />
-          {/* <Pressable style={searchTile.circle} onPress={toggleBookmark}>
+          <Pressable style={searchTile.circle} onPress={toggleBookmark}>
             <Ionicons
               style={searchTile.icon}
               name={bookmark ? "bookmark" : "bookmark-outline"}
               size={24}
               color={bookmark ? colours.purple : "black"}
             />
-          </Pressable> */}
+          </Pressable>
         </View>
         <View style={searchTile.tileContent}>
           <Text numberOfLines={2} ellipsizeMode="tail" style={styles.text}>

@@ -104,7 +104,6 @@ const dataHandler = {
       viewer.bookmarks.splice(index, 1);
       dataHandler.saveData();
     }
-    console.log(viewer);
   },
   clearRecentlyViewed: (userId) => {
     const viewer = memoryData.users.find((user) => user.id === userId);

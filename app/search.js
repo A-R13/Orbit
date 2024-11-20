@@ -7,13 +7,14 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 import colours from "@colours";
 import SearchTabBar from "components/SearchTabBar";
 import SearchTile from "components/SearchTile";
+import dataHandler from "@dataHandler";
 import data from "@data";
 
 export default function SearchScreen() {
@@ -21,6 +22,15 @@ export default function SearchScreen() {
   const [locations, setlocations] = useState(data.locations);
   const [search, setSearch] = useState("");
   const { category, date } = useLocalSearchParams();
+  const [bookmarks, setBookmarks] = useState([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      // This will run every time the screen is focused
+      const userBookmarks = dataHandler.getUser(data.currentUserId).bookmarks;
+      setBookmarks(userBookmarks);
+    }, [tab]) // Trigger the effect every time 'search' changes or screen focuses
+  );
 
   useEffect(() => {
     setSearch("");
@@ -122,6 +132,8 @@ export default function SearchScreen() {
                   status={status}
                   image={images[0]}
                   numReviews={reviews.length}
+                  bookmarks={bookmarks}
+                  setBookmarks={setBookmarks}
                 />
               )
             )

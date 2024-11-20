@@ -83,6 +83,8 @@ export default function SavedScreen() {
                     status={status}
                     image={images[0]}
                     numReviews={reviews.length}
+                    bookmarks={bookmarks}
+                    setBookmarks={setBookmarks}
                   />
                 )
               )

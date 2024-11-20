@@ -5,7 +5,6 @@ import colours from "@colours";
 import dataHandler from "@dataHandler";
 import data from "@data";
 export default function SavedButton({ locationId, bookmark, setBookmark }) {
-  console.log(locationId);
   function handleToggle({ locationId, bookmark }) {
     const check = !bookmark;
     const userId = data.currentUserId;

@@ -1,6 +1,7 @@
 import dataHandler from "@dataHandler";
 import { Link } from "expo-router";
 import { Text, View, Pressable, StyleSheet } from "react-native";
+import styles from "@styles";
 
 export default function AccountScreen() {
   return (

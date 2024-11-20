@@ -70,9 +70,9 @@
     {
       "id": "location_2",
       "name": "Village Green",
-      "address": "TBC",
+      "address": "University Mall",
       "status": 2,
-      "description": "TBC",
+      "description": "A large open space that has been transformed into a sports and leisure hub",
       "images": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnZCF9wzx1sRCxMlwrg4L7F01HmIR3O7AubQ&s"
       ],
@@ -96,7 +96,7 @@
     {
       "id": "location_3",
       "name": "XS Expresso",
-      "address": "TBC",
+      "address": "Biological Science D26",
       "status": 3,
       "description": "XS Espresso, located in the Biological Sciences Building, Upper Campus, is a lively, semi-outdoor cafe that offers a diverse selection of fusion breakfasts, lunches, dinner and desserts. Named Australian Cafe of the Year in 2018, XS Espresso are well known for their delicious shakes; the Cronut, the Pistachio, and the Golden Gaytime, just to name a few. The cafe proudly serves Campos coffee and is a great spot to catch up with friends over delicious food. Open every day.",
       "images": [
@@ -134,8 +134,116 @@
         "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/massive/public/images/1.%20Main%20Picture_Colombo%20Study%20Space%20%281%29.jpg?itok=payvVAa_"
       ],
       "categories": ["Study"],
-      "reviews": [],
+      "reviews": [
+        {
+        "userId": "user_1",
+        "rating": 1.0,
+        "text": "TBC"
+      }],
+      "communityNotes": []
+    },
+    {
+      "id": "location_5",
+      "name": "UNSW Business Study Space",
+      "address": "UNSW Business School E12",
+      "description": "Located opposite Science theatre",
+      "images": [
+        "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/teaser_mobile/public/images/study-space-business-school.jpg?h=3e4df26a&itok=bxjKkfdp"
+      ],
+      "categories": ["Study"],
+      "reviews": [
+        {
+        "userId": "user_1",
+        "rating": 2.0,
+        "text": "TBC"
+      }],
+      "communityNotes": []
+    },
+    {
+      "id": "location_6",
+      "name": "Morven Brown Study space",
+      "address": "Morven Brown Building K-C20 ",
+      "description": "Located on upper campus houses the School of Humanities and Languages",
+      "images": [
+        "https://www.learningenvironments.unsw.edu.au/sites/default/files/styles/teaser_mobile/public/images/C20-Morven-Brown-SLS.jpg?h=8b7966f8&itok=k36dhtGe"
+      ],
+      "categories": ["Study"],
+      "reviews": [
+        {
+        "userId": "user_1",
+        "rating": 3.0,
+        "text": "TBC"
+      }],
+      "communityNotes": []
+    },
+    {
+      "id": "location_7",
+      "name": "Yallah Eat Pita",
+      "address": "University Terraces B8",
+      "description": "Popular for its range of build-your-own Middle Eastern pitas and bowls",
+      "images": [
+        "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_mobile/public/images/2023-08-yallah-gold.jpg?h=10d202d3&itok=QfRUBTeE"
+      ],
+      "categories": ["Food"],
+      "reviews": [
+        {
+        "userId": "user_1",
+        "rating": 5.0,
+        "text": "TBC"
+      }],
+      "communityNotes": []
+    },
+    {
+      "id": "location_8",
+      "name": "Caffe Brioso",
+      "address": "Mathews Arcade E24",
+      "description": "Serving their own specialty coffee blends for over 25 years on the UNSW",
+      "images": [
+        "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_mobile/public/images/2023-10-Caffe-Brioso-Front-Gold_1.jpg?h=0bd111d5&itok=b94sMEX0"
+      ],
+      "categories": ["Coffee","Food"],
+      "reviews": [
+        {
+        "userId": "user_1",
+        "rating": 4.0,
+        "text": "TBC"
+      }],
+      "communityNotes": []
+    },
+    {
+      "id": "location_9",
+      "name": "Coffee on Campus",
+      "address": "Ainsworth Building J17",
+      "description": "A popular spot for sandwiches, pasta, hot food, salads, wraps, juices, cakes and more",
+      "images": [
+        "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_mobile/public/images/Coffee-on-Campus_1.jpeg?h=4cdaabca&itok=ST2IMZcA"
+      ],
+      "categories": ["Coffee","Food"],
+      "reviews": [
+        {
+        "userId": "user_1",
+        "rating": 5.0,
+        "text": "Great and convenient coffee!!"
+      }],
+      "communityNotes": []
+    },
+    {
+      "id": "location_10",
+      "name": "Guzman Y Gomez",
+      "address": "University Terraces B8",
+      "description": "Providing guests with the freshest, cleanest and fastest made-to-order, Mexican-inspired food",
+      "images": [
+        "https://www.estate.unsw.edu.au/sites/default/files/styles/teaser_mobile/public/images/guzman-y-gomez-gold.png?h=56d0ca2e&itok=mgQBKAtA"
+      ],
+      "categories": ["Food"],
+      "reviews": [
+        {
+        "userId": "user_1",
+        "rating": 3.0,
+        "text": "Good Food, Long wait times"
+      }],
       "communityNotes": []
     }
+    
   ]
 }

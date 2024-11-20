@@ -9,6 +9,14 @@ export default styles = StyleSheet.create({
     flexDirection: "row",
     columnGap: 8,
   },
+  titleText: {
+    fontSize: 96,
+    lineHeight: 96,
+    fontWeight: "bold",
+    textAlign: "center",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
   sectionText: {
     fontSize: 24,
     lineHeight: 24,

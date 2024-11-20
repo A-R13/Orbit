@@ -66,6 +66,33 @@ const dataHandler = {
       dataHandler.saveData();
     }
   },
+
+  addRecentlyViewed: (userId, locationId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      const index = viewer.recentlyViewed.indexOf(locationId);
+      if (index > -1) {
+        // Remove existing entry
+        viewer.recentlyViewed.splice(index, 1);
+      }
+      // Add to the start
+      viewer.recentlyViewed.unshift(locationId);
+
+      // Keep recently viewed to 5 items
+      if (viewer.recentlyViewed.length > 5) {
+        viewer.recentlyViewed.pop();
+      }
+      dataHandler.saveData();
+    }
+  },
+
+  clearRecentlyViewed: (userId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      viewer.recentlyViewed = [];
+      dataHandler.saveData();
+    }
+  },
 };
 
 dataHandler.loadData();

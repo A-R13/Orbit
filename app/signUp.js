@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   SafeAreaView,
   Text,
@@ -10,12 +11,17 @@ import { useRouter, Link } from "expo-router";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 import PrimaryButton from "components/PrimaryButton";
+import FormInput from "components/FormInput";
 
 import styles from "@styles";
 import colours from "@colours";
 
 export default function SignUpScreen() {
   const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <SafeAreaView
@@ -24,6 +30,7 @@ export default function SignUpScreen() {
         {
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: colours.white,
         },
       ]}
     >
@@ -33,8 +40,27 @@ export default function SignUpScreen() {
       >
         <FontAwesome5 name="chevron-left" size={25} color={colours.darkGrey} />
       </Pressable>
-      <Text style={[styles.titleText, { marginBottom: 64 }]}>Orbit</Text>
+      <Text style={styles.titleText}>Orbit</Text>
       <View style={signUp.interactionContainer}>
+        <FormInput
+          title={"Username"}
+          text={username}
+          onChangeText={setUsername}
+        />
+        <FormInput title={"Email"} text={email} onChangeText={setEmail} />
+        <FormInput
+          title={"Password"}
+          text={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
+        />
+        <FormInput
+          title={"Confirm password"}
+          text={confirmPassword}
+          onChangeText={setConfirmPassword}
+          secureTextEntry={true}
+        />
+
         <PrimaryButton text={"Sign Up"} />
         <View style={signUp.textContainer}>
           <Text
@@ -61,8 +87,8 @@ export default function SignUpScreen() {
         </View>
       </View>
       <Image
-        style={{ width: "100%", position: "absolute", bottom: 0 }}
-        source={require("assets/Landing.png")}
+        style={{ position: "absolute", bottom: 0, left: 0 }}
+        source={require("assets/Landing2.png")}
         resizeMode="contain"
       />
     </SafeAreaView>

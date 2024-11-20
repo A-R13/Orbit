@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   SafeAreaView,
   Text,
@@ -10,12 +11,15 @@ import { useRouter, Link } from "expo-router";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 import PrimaryButton from "components/PrimaryButton";
+import FormInput from "components/FormInput";
 
 import styles from "@styles";
 import colours from "@colours";
 
 export default function LogInScreen() {
   const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <SafeAreaView
@@ -24,6 +28,7 @@ export default function LogInScreen() {
         {
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: colours.white,
         },
       ]}
     >
@@ -33,8 +38,22 @@ export default function LogInScreen() {
       >
         <FontAwesome5 name="chevron-left" size={25} color={colours.darkGrey} />
       </Pressable>
-      <Text style={[styles.titleText, { marginBottom: 64 }]}>Orbit</Text>
+      <Text style={styles.titleText}>Orbit</Text>
       <View style={logIn.interactionContainer}>
+        <FormInput
+          title={"Username"}
+          text={username}
+          onChangeText={setUsername}
+        />
+        <FormInput
+          title={"Password"}
+          text={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
+        />
+        {/* Invisible boxes to take up space */}
+        <View style={{ flex: 0, height: 60, width: 320 }}></View>
+        <View style={{ flex: 0, height: 60, width: 320 }}></View>
         <PrimaryButton text={"Log In"} />
         <View style={logIn.textContainer}>
           <Text
@@ -61,8 +80,8 @@ export default function LogInScreen() {
         </View>
       </View>
       <Image
-        style={{ width: "100%", position: "absolute", bottom: 0 }}
-        source={require("assets/Landing.png")}
+        style={{ position: "absolute", bottom: 0, left: 0 }}
+        source={require("assets/Landing2.png")}
         resizeMode="contain"
       />
     </SafeAreaView>

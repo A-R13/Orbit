@@ -17,6 +17,7 @@ import LocationOverview from "components/LocationOverview";
 import LocationReviews from "components/LocationReviews";
 
 import data from "@data";
+import dataHandler from "@dataHandler";
 import styles from "@styles";
 import colours from "@colours";
 
@@ -27,16 +28,14 @@ const PANEL_HEIGHT = 500;
 export default function LocationScreen() {
   const screenHeight = Dimensions.get("window").height;
   const [tab, setTab] = useState("Overview");
-
   const { locationId } = useLocalSearchParams();
-  const location = data.locations.find(
-    (location) => location.id === locationId
-  );
+  const location = dataHandler.getLocation(locationId);
 
   useFocusEffect(
     useCallback(() => {
       setTab("Overview");
-    }, [])
+      dataHandler.addRecentlyViewed(data.currentUserId, locationId);
+    }, [locationId])
   );
 
   // Render content based on the selected tab
@@ -101,7 +100,8 @@ export default function LocationScreen() {
               starSize={16}
             />
             <Text style={[styles.smallText, { color: colours.darkGrey }]}>
-              {location.reviews.length} reviews
+              {location.reviews.length} review
+              {location.reviews.length === 1 ? "" : "s"}
             </Text>
           </View>
         </View>
@@ -113,9 +113,9 @@ export default function LocationScreen() {
 }
 
 function averageRating(reviews) {
-  return (
-    reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
-  );
+  return reviews.length === 0
+    ? 0
+    : reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
 }
 
 function statusToText(status) {

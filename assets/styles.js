@@ -14,6 +14,8 @@ export default styles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: "bold",
     textAlign: "left",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   text: {
     fontSize: 24,
@@ -34,7 +36,7 @@ export default styles = StyleSheet.create({
   },
   horizontalTiles: {
     marginTop: 8,
-    marginBottom: 32,
+    marginBottom: 24,
     marginHorizontal: 32,
     overflow: "visible",
   },
@@ -54,5 +56,9 @@ export default styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
+  },
+  reviews: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

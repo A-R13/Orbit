@@ -1,11 +1,12 @@
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import { Text, Image, StyleSheet, View, Pressable } from "react-native";
 import { Link } from "expo-router";
+
 import { StarRatingDisplay } from "react-native-star-rating-widget";
 
 import styles from "@styles";
 import colours from "@colours";
 
-export default function LargeTile({
+export default function SmallTile({
   locationId,
   name,
   rating,
@@ -21,10 +22,10 @@ export default function LargeTile({
       }}
       asChild
     >
-      <Pressable style={largeTile.largeTile}>
-        <Image source={{ uri: image }} style={largeTile.image} />
-        <View style={largeTile.tileContent}>
-          <Text style={styles.smallText} numberOfLines={1}>
+      <Pressable style={smallTile.smallTile}>
+        <Image source={{ uri: image }} style={smallTile.smallImage} />
+        <View style={smallTile.tileContent}>
+          <Text style={styles.smallText} numberOfLines={2}>
             {name}
           </Text>
           <View style={styles.reviews}>
@@ -32,11 +33,9 @@ export default function LargeTile({
               rating={rating}
               color={colours.purple}
               emptyColor={colours.lightPurple}
-              starSize={16}
+              starSize={13}
             />
-            <Text style={largeTile.reviewText}>
-              {numReviews} review{numReviews === 1 ? "" : "s"}
-            </Text>
+            <Text style={smallTile.reviewText}>({numReviews})</Text>
           </View>
         </View>
       </Pressable>
@@ -44,11 +43,11 @@ export default function LargeTile({
   );
 }
 
-const largeTile = StyleSheet.create({
-  largeTile: {
-    height: 268,
-    width: 330,
-    flexDirection: "column",
+const smallTile = StyleSheet.create({
+  smallTile: {
+    height: 160,
+    width: 150,
+    flexDirection: "coloumn",
     justifyContent: "space-between",
     alignItems: "flex-start",
     backgroundColor: colours.white,
@@ -58,11 +57,11 @@ const largeTile = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
   },
-  image: {
-    height: 220,
-    width: 330,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+  smallImage: {
+    width: 150,
+    height: 100,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   tileContent: {
     flex: 1,
@@ -72,11 +71,9 @@ const largeTile = StyleSheet.create({
     padding: 8,
   },
   reviewText: {
-    paddingTop: 2,
-    paddingLeft: 5,
     color: colours.darkGrey,
-    fontSize: 14,
-    lineHeight: 14,
+    fontSize: 12,
+    lineHeight: 12,
     fontWeight: "regular",
   },
 });

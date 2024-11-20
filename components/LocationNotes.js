@@ -8,7 +8,7 @@ import data from "@data";
 import dataHandler from "@dataHandler";
 
 export default function LocationNotes({ location }) {
-  const [notes, setNotes] = useState();
+  const [rerender, setRerender] = useState(0);
 
   // Handle upvote/downvote
   const handleVote = (noteIdx, type) => {
@@ -37,7 +37,8 @@ export default function LocationNotes({ location }) {
         note.upvotes = note.upvotes.filter((id) => id !== viewerId);
       }
     }
-    setNotes(updatedNotes);
+    setRerender((prev) => prev + 1);
+    dataHandler.updateCommunityNotes(location.id, updatedNotes);
   };
 
   return (

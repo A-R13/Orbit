@@ -21,19 +21,23 @@ export default function SearchScreen() {
   const [locations, setlocations] = useState(data.locations);
   const [search, setSearch] = useState("");
   const { category, date } = useLocalSearchParams();
+
   useEffect(() => {
+    setSearch("");
     if (category === "Study") {
       setTab("Study");
-    } else if (category === "Food" || category === "Coffee") {
-      setTab("Eat");
+    } else if (category === "Food") {
+      setTab("Food");
+    } else if (category === "Coffee") {
+      setTab("Coffee");
     } else if (category === "Greenery") {
-      setTab("Relax");
+      setTab("Greenery");
     } else if (category === "All") {
       setTab("All");
     }
   }, [date]);
 
-  // Search bar and categories
+  // Search bar and categories filter
   useEffect(() => {
     if (tab === "All") {
       setlocations(
@@ -51,19 +55,27 @@ export default function SearchScreen() {
             )
         )
       );
-    } else if (tab === "Eat") {
+    } else if (tab === "Food") {
       setlocations(
         data.locations.filter(
           (location) =>
             location.name.toLowerCase().includes(search.toLowerCase()) &&
-            location.categories.some(
-              (category) =>
-                category.toLowerCase().includes("food") ||
-                category.toLowerCase().includes("coffee")
+            location.categories.some((category) =>
+              category.toLowerCase().includes("food")
             )
         )
       );
-    } else if (tab === "Relax") {
+    } else if (tab === "Coffee") {
+      setlocations(
+        data.locations.filter(
+          (location) =>
+            location.name.toLowerCase().includes(search.toLowerCase()) &&
+            location.categories.some((category) =>
+              category.toLowerCase().includes("coffee")
+            )
+        )
+      );
+    } else if (tab === "Greenery") {
       setlocations(
         data.locations.filter(
           (location) =>
@@ -79,7 +91,7 @@ export default function SearchScreen() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={{ flex: 1, alignItems: "center" }}>
-        <SearchTabBar tab={tab} setTab={setTab} />
+        <SearchTabBar tab={tab} setTab={setTab} setSearch={setSearch} />
         <View style={searchPage.searchBar}>
           <Ionicons name="search" size="20" margin="3" />
           <TextInput

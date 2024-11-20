@@ -86,6 +86,26 @@ const dataHandler = {
     }
   },
 
+  addBookmark: (userId, locationId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      if (!viewer.bookmarks.includes(locationId)) {
+        viewer.bookmarks.push(locationId);
+        dataHandler.saveData();
+      }
+    }
+  },
+
+  removeBookmark: (userId, locationId) => {
+    const viewer = memoryData.users.find((user) => user.id === userId);
+    if (viewer) {
+      const index = viewer.bookmarks.indexOf(locationId);
+
+      viewer.bookmarks.splice(index, 1);
+      dataHandler.saveData();
+    }
+    console.log(viewer);
+  },
   clearRecentlyViewed: (userId) => {
     const viewer = memoryData.users.find((user) => user.id === userId);
     if (viewer) {

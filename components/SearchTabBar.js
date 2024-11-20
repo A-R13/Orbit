@@ -3,23 +3,52 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import styles from "@styles";
 import colours from "@colours";
 
-export default function SearchTabBar({ tab, setTab }) {
+export default function SearchTabBar({ tab, setTab, setSearch }) {
   return (
     <View style={searchTabBar.locationTabBar}>
-      <SearchTab tabName={"All"} tab={tab} setTab={setTab} />
-      <SearchTab tabName={"Study"} tab={tab} setTab={setTab} />
-      <SearchTab tabName={"Eat"} tab={tab} setTab={setTab} />
-      <SearchTab tabName={"Relax"} tab={tab} setTab={setTab} />
+      <SearchTab
+        tabName={"All"}
+        tab={tab}
+        setTab={setTab}
+        setSearch={setSearch}
+      />
+      <SearchTab
+        tabName={"Study"}
+        tab={tab}
+        setTab={setTab}
+        setSearch={setSearch}
+      />
+      <SearchTab
+        tabName={"Food"}
+        tab={tab}
+        setTab={setTab}
+        setSearch={setSearch}
+      />
+      <SearchTab
+        tabName={"Coffee"}
+        tab={tab}
+        setTab={setTab}
+        setSearch={setSearch}
+      />
+      <SearchTab
+        tabName={"Greenery"}
+        tab={tab}
+        setTab={setTab}
+        setSearch={setSearch}
+      />
     </View>
   );
 }
 
-function SearchTab({ tabName, tab, setTab }) {
+function SearchTab({ tabName, tab, setTab, setSearch }) {
   const isSelected = tab == tabName;
   return (
     <Pressable
       style={[searchTabBar.locationTab, isSelected && searchTabBar.selectedTab]}
-      onPress={() => setTab(tabName)}
+      onPress={() => {
+        setTab(tabName);
+        setSearch("");
+      }}
     >
       <Text
         style={[
@@ -49,7 +78,7 @@ const searchTabBar = StyleSheet.create({
   },
   locationTabBar: {
     height: 24,
-    width: "80%",
+    width: "85%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

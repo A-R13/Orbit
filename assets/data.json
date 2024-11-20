@@ -7,28 +7,32 @@
       "username": "jhernandez",
       "email": "jerome@example.com",
       "password": "hash123",
-      "recentlyViewed": ["location_1"]
+      "recentlyViewed": ["location_1"],
+      "bookmarks":[]
     },
     {
       "id": "user_2",
       "username": "arana",
       "email": "aditya@example.com",
       "password": "hash123",
-      "recentlyViewed": []
+      "recentlyViewed": [],
+      "bookmarks":[]
     },
     {
       "id": "user_3",
       "username": "johnAlcantara",
       "email": "john@example.com",
       "password": "hash123",
-      "recentlyViewed": []
+      "recentlyViewed": [],
+      "bookmarks":[]
     },
     {
       "id": "user_4",
       "username": "akankshaKaur",
       "email": "akanksha@example.com",
       "password": "hash123",
-      "recentlyViewed": []
+      "recentlyViewed": [],
+      "bookmarks":[]
     }
   ],
   "locations": [

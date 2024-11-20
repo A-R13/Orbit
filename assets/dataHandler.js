@@ -112,6 +112,14 @@ const dataHandler = {
       dataHandler.saveData();
     }
   },
+
+  updateCommunityNotes: (locationId, updatedNotes) => {
+    const location = memoryData.locations.find((loc) => loc.id === locationId);
+    if (location) {
+      location.communityNotes = updatedNotes;
+      dataHandler.saveData();
+    }
+  },
 };
 
 dataHandler.loadData();

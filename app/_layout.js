@@ -49,6 +49,18 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen name="location" options={{ href: null }} />
+      <Tabs.Screen
+        name="landing"
+        options={{ href: null, tabBarStyle: { display: "none" } }}
+      />
+      <Tabs.Screen
+        name="signUp"
+        options={{ href: null, tabBarStyle: { display: "none" } }}
+      />
+      <Tabs.Screen
+        name="logIn"
+        options={{ href: null, tabBarStyle: { display: "none" } }}
+      />
       <Tabs.Screen name="index" options={{ href: null }} />
     </Tabs>
   );

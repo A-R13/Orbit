@@ -12,9 +12,17 @@ export default function LocationReviews({ location }) {
       style={locationReviews.locationReviews}
       showsVerticalScrollIndicator={false}
     >
+      <Text
+        style={[styles.smallText, { textAlign: "center", fontStyle: "italic" }]}
+      >
+        Share your experiences and thoughts
+      </Text>
       {location.reviews.map(({ userId, rating, text }, idx) => (
         <View style={locationReviews.review} key={idx}>
-          <Text style={styles.smallText}>
+          <Text
+            style={[styles.smallText, { fontWeight: "bold" }]}
+            numberOfLines={1}
+          >
             {dataHandler.getUser(userId).username}
           </Text>
           <View style={locationReviews.row}>

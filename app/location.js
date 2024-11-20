@@ -15,6 +15,7 @@ import SavedButton from "components/SavedButton";
 import LocationTabBar from "components/LocationTabBar";
 import LocationOverview from "components/LocationOverview";
 import LocationReviews from "components/LocationReviews";
+import LocationNotes from "components/LocationNotes";
 
 import data from "@data";
 import dataHandler from "@dataHandler";
@@ -48,7 +49,7 @@ export default function LocationScreen() {
   function renderContent() {
     switch (tab) {
       case "Notes":
-        return <Text style={styles.smallText}>Notes</Text>;
+        return <LocationNotes location={location} />;
       case "Reviews":
         return <LocationReviews location={location} />;
       default:

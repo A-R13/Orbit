@@ -54,7 +54,10 @@ export default function LogInScreen() {
         {/* Invisible boxes to take up space */}
         <View style={{ flex: 0, height: 60, width: 320 }}></View>
         <View style={{ flex: 0, height: 60, width: 320 }}></View>
-        <PrimaryButton text={"Log In"} />
+        <PrimaryButton
+          text={"Log In"}
+          onPress={() => router.navigate("home")}
+        />
         <View style={logIn.textContainer}>
           <Text
             style={[

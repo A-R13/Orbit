@@ -61,7 +61,10 @@ export default function SignUpScreen() {
           secureTextEntry={true}
         />
 
-        <PrimaryButton text={"Sign Up"} />
+        <PrimaryButton
+          text={"Sign Up"}
+          onPress={() => router.navigate("home")}
+        />
         <View style={signUp.textContainer}>
           <Text
             style={[

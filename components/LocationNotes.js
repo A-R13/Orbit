@@ -1,5 +1,5 @@
 import { Text, View, ScrollView, StyleSheet } from "react-native";
-import { StarRatingDisplay } from "react-native-star-rating-widget";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 import styles from "@styles";
 import colours from "@colours";
@@ -27,6 +27,20 @@ export default function LocationNotes({ location }) {
               {dataHandler.getUser(userId).username}
             </Text>
             <Text style={styles.smallText}>{text}</Text>
+            <View style={locationNotes.row}>
+              <FontAwesome6 name="up-long" size={20} color={colours.darkGrey} />
+              <Text
+                style={[styles.smallText, { fontWeight: "bold" }]}
+                numberOfLines={1}
+              >
+                {upvotes.length - downvotes.length}
+              </Text>
+              <FontAwesome6
+                name="down-long"
+                size={20}
+                color={colours.darkGrey}
+              />
+            </View>
           </View>
         )
       )}
@@ -50,7 +64,8 @@ const locationNotes = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    justifyContent: "flex-end",
     alignItems: "center",
-    columnGap: 4,
+    columnGap: 8,
   },
 });

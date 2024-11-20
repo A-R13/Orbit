@@ -26,10 +26,12 @@ export default function SearchScreen() {
 
   useFocusEffect(
     useCallback(() => {
+      console.log("screen focused");
       // This will run every time the screen is focused
       const userBookmarks = dataHandler.getUser(data.currentUserId).bookmarks;
+      console.log(userBookmarks);
       setBookmarks(userBookmarks);
-    }, [tab]) // Trigger the effect every time 'search' changes or screen focuses
+    }, [])
   );
 
   useEffect(() => {

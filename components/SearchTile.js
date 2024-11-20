@@ -19,8 +19,6 @@ export default function SearchTile({
   bookmarks,
   setBookmarks,
 }) {
-  const user = dataHandler.getUser(data.currentUserId);
-
   const [bookmark, setBookmark] = useState(bookmarks.includes(locationId));
 
   useEffect(() => {
@@ -31,6 +29,7 @@ export default function SearchTile({
     }
   }, [locationId]);
 
+  // save/unsave location
   const toggleBookmark = () => {
     if (bookmark === true) {
       dataHandler.removeBookmark(data.currentUserId, locationId);
@@ -43,6 +42,8 @@ export default function SearchTile({
     }
     setBookmark(!bookmark);
   };
+
+  // Render the live activity status
   function statusToText(status) {
     if (status <= 1) {
       return "Very quiet";

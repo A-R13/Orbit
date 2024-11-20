@@ -40,6 +40,7 @@ export default function SearchTabBar({ tab, setTab, setSearch }) {
   );
 }
 
+// Select and switch to appropriate tab
 function SearchTab({ tabName, tab, setTab, setSearch }) {
   const isSelected = tab == tabName;
   return (
